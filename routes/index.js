@@ -1,9 +1,26 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+const { dashboard } = require('../controllers/dashController');
+const { indexPage, 
+        shopPage, 
+        contactPage, 
+        productPage, 
+        cartPage,
+        checkoutPage,
+        loginPage,
+        registerPage,
+    } = require('../controllers/frontController');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', indexPage);
+router.get('/shop', shopPage);
+router.get('/contact', contactPage);
+router.get('/product', productPage);
+router.get('/cart', cartPage);
+router.get('/checkout', checkoutPage);
+router.get('/login', loginPage);
+router.get('/register', registerPage)
+
+
+router.get('/dashboard/', dashboard);
 
 module.exports = router;
