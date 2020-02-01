@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { dashboard } = require('../controllers/dashController');
+const { dashboard, 
+        newProduct,
+} = require('../controllers/dashController');
 const { indexPage, 
         shopPage, 
         contactPage, 
@@ -22,5 +24,6 @@ router.get('/register', registerPage)
 
 
 router.get('/dashboard/', dashboard);
+router.post('/product', newProduct)
 
 module.exports = router;
