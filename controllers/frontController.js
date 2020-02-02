@@ -1,5 +1,7 @@
+
 exports.indexPage = (req, res, next) => {
-    res.render('frontend/index', { title: 'Phash :: Home' });
+    let logged = req.user;
+    res.render('frontend/index', { title: 'Phash :: Home', logged });
 };
 
 exports.shopPage = (req, res, next) => {
@@ -37,5 +39,6 @@ exports.loginPage = (req, res, next) => {
 };
 
 exports.registerPage = (req, res, next) => {
-    res.render('frontend/register', { title: 'Phash :: register' });
+    let message = req.flash('userExist');
+    res.render('frontend/register', { title: 'Phash :: register', message });
 };

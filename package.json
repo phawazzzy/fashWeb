@@ -9,10 +9,13 @@
   "dependencies": {
     "bcrypt": "^3.0.7",
     "cloudinary": "^1.19.0",
+    "connect-mongodb-session": "^2.3.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",
