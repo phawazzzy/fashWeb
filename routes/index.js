@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const { dashboard, 
-        newProduct,
+const { dashboard,
+    dashProduct,
+    newProduct,
 } = require('../controllers/dashController');
-const { indexPage, 
-        shopPage, 
-        contactPage, 
-        productPage, 
-        cartPage,
-        checkoutPage,
-        loginPage,
-        registerPage,
-    } = require('../controllers/frontController');
+const { indexPage,
+    shopPage,
+    contactPage,
+    productPage,
+    cartPage,
+    checkoutPage,
+    loginPage,
+    registerPage,
+} = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
 router.get('/shop', shopPage);
@@ -37,7 +38,10 @@ router.post('/login/members', passport.authenticate('local.login', {
 
 
 router.get('/dashboard/', dashboard);
+router.get('/dashboard/product', dashProduct);
 router.post('/product', newProduct);
+
+
 
 router.get('/logout', (req, res) => {
     req.logout();
