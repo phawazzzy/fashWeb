@@ -1,5 +1,15 @@
 const multer = require('multer');
 const path = require('path');
+// const cloudinary = require('cloudinary');
+// const cloudinaryStorage = require("multer-storage-cloudinary");
+
+
+
+// const cloudStorage = cloudinaryStorage({
+//     cloudinary: cloudinary,
+//     folder: "Phashsupping",
+//     allowedFormats: ["jpg", "png"],
+// });
 
 
 const diskStorage = multer.diskStorage({

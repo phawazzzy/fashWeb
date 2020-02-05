@@ -1,4 +1,7 @@
 const ProductModel = require('../models/products');
+const cloudinary = require('../config/cloudinary')
+const fs = require('fs');
+
 // const multer = require('multer');
 
 // const diskStorage = multer.diskStorage({
@@ -53,20 +56,23 @@ exports.newProduct = async (req, res, next) => {
 
   if (req.files) {
     try {
-      let allFiles = req.files;
-      let singless = allFiles.map((file) => {
-        return {
-          path: file.path,
-          fileName: file.filename
-        }
-      })
-      // console.log(singless);
-      productDetails.productImage1 = singless[0].path
-      productDetails.publicid1 = singless[0].fileName
-      productDetails.productImage2 = singless[1].path
-      productDetails.publicid2 = singless[1].fileName
-      productDetails.productImage3 = singless[2].path
-      productDetails.publicid3 = singless[2].fileName
+      const uploader = async (path) => await cloudinary.uploads(path, 'Phash');
+      const urls = [];
+      const files = req.files;
+      for (const file of files) {
+        const { path } = file;
+        const newPath = await uploader(path)
+        urls.push(newPath)
+        fs.unlinkSync(path)
+      }
+      console.log(urls)
+
+      productDetails.productImage1 = urls[0].url
+      productDetails.publicid1 = urls[0].id
+      productDetails.productImage2 = urls[1].url
+      productDetails.publicid2 = urls[1].id
+      productDetails.productImage3 = urls[2].url
+      productDetails.publicid3 = urls[2].id
     } catch (error) {
       console.log(error)
       req.flash('ImageError', `An error ${error} occured during the image upload`)

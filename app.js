@@ -8,6 +8,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
 const passport = require('passport');
 const flash = require('express-flash');
+const dotenv = require('dotenv');
+dotenv.config()
 
 // const who = function(req, res, next) {
 //   if (req.user) {
