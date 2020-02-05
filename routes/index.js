@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const upload = require('../middlewares/fileUpload');
 
 const { dashboard,
     dashProduct,
@@ -42,7 +43,7 @@ router.post('/login/members', passport.authenticate('local.login', {
 
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
-router.post('/post/dashboard/product', newProduct);
+router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
 
 
 
