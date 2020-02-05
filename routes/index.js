@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+
 const { dashboard,
     dashProduct,
     newProduct,
 } = require('../controllers/dashController');
+
+
 const { indexPage,
     shopPage,
     contactPage,
@@ -39,7 +42,7 @@ router.post('/login/members', passport.authenticate('local.login', {
 
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
-router.post('/product', newProduct);
+router.post('/post/dashboard/product', newProduct);
 
 
 

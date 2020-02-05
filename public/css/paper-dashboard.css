@@ -1868,7 +1868,8 @@ fieldset[disabled] .btn-link.active {
 }
 
 .form-control+.input-group-append .input-group-text,
-.form-control+.input-group-prepend .input-group-text {
+.form-control+.input-group-prepend .input-group-text,
+.form-control .input-group-file {
   background-color: #FFFFFF;
 }
 

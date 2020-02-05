@@ -1143,7 +1143,7 @@ text-shadow: none;
 		width: 100%;
 		text-align: center;
 		border: 0;
-		box-shadow: 0 0 0 1px #ccc;
+		box-shadow: 0 0 0 1px black;
 		padding: .2em;
                 -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;

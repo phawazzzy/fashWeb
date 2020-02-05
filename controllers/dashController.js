@@ -9,6 +9,7 @@ exports.dashboard = (req, res, next) => {
     res.render('backend/products', {title: 'Add new products'})
   }
 exports.newProduct = (req, res, next) => {
+  
   res.render('backend/newProduct', {title: 'add product'})
 }  
 exports.loginAdmin = (req, res, next) => {
