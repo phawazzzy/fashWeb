@@ -24,7 +24,7 @@ function checkFiletype(file, cb) {
   if(mimetype && extname ){
     return cb(null, true); 
   } else {
-    cb(new Error('Error Occured: I can onlly take in images'));
+    cb(new Error('Error Occured: I can only take in images'));
   }
 }
 
