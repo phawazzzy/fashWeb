@@ -17,7 +17,7 @@
                     <h1 class="h2 rw">Edit Page Content: <span class="text-info">New Product</span></h1>
                 </div>
                 <form action="/post/dashboard/product" method="post" enctype="multipart/form-data">
-                    <%- success ? success : '' %>
+                    <%#- success ? success : '' %>
 
                     <%- include('./fields/text.ejs', {fieldname: 'productName', fieldlabel: 'Product Name', fieldplaceholder: 'PRODUCT NAME HERE', valueField: ''}) %>
                     <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image front view', fieldPlaceholder: 'front view image', valueField: '' }) %>

@@ -1,60 +1,59 @@
 
 exports.indexPage = (req, res, next) => {
-    const logged = req.user;
-    let check = (req.user) ? console.log('user logged in') : console.log('user not logged')
-    // console.log(logged._id)
-    res.render('frontend/index', { title: 'Phash :: Home', logged });
+    
+    let check = (req.user) ? console.log('user  in') : console.log('user not ')
+    // console.log(._id)
+    res.render('frontend/index', { title: 'Phash :: Home',  });
 };
 
 exports.shopPage = (req, res, next) => {
-    const logged = req.user;
+    
 
     let pageName = 'Shop';
-    res.render('frontend/shop', { title: 'Phash :: Shop', pageName, logged });
+    res.render('frontend/shop', { title: 'Phash :: Shop', pageName,  });
 };
 
 exports.contactPage = (req, res, next) => {
-    const logged = req.user;
+    
 
     let pageName = 'contact';
-    res.render('frontend/contact', { title: 'Phash :: Contact', pageName, logged });
+    res.render('frontend/contact', { title: 'Phash :: Contact', pageName,  });
 };
 
 exports.productPage = (req, res, next) => {
-    const logged = req.user;
+    
 
     let path = req.path;
     console.log(path)
     let pageName = 'shop';
     let subpageName = 'details';
-    res.render('frontend/product', { title: 'Phash :: Product', pageName, subpageName, path, logged });
+    res.render('frontend/product', { title: 'Phash :: Product', pageName, subpageName, path,  });
 };
 
 exports.cartPage = (req, res, next) => {
-    const logged = req.user;
-
+    console.log(req.body.quantity)
     let pageName = 'shop';
     let subpageName = 'shopping cart';
-    res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, logged });
+    res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, });
 };
 
+
 exports.checkoutPage = (req, res, next) => {
-    const logged = req.user;
+    
 
     let pageName = 'checkout';
     let subpageName = '';
-    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, logged });
+    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName,  });
 };
 
 exports.loginPage = (req, res, next) => {
-    const logged = req.user;
 
-    res.render('frontend/login', { title: 'Phash :: login', logged });
+    res.render('frontend/login', { title: 'Phash :: login',  });
 };
 
 exports.registerPage = (req, res, next) => {
-    const logged = req.user;
+    
 
     let message = req.flash('userExist');
-    res.render('frontend/register', { title: 'Phash :: register', message, logged });
+    res.render('frontend/register', { title: 'Phash :: register', message,  });
 };

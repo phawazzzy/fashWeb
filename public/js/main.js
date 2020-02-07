@@ -244,7 +244,9 @@
 				newVal = 0;
 			}
 		}
-		$button.parent().find('input').val(newVal);
+        $button.parent().find('input').val(newVal);
+        console.log(newVal);
+        document.getElementById('quantity').value = newVal;
 	});
 
 })(jQuery);

@@ -44,7 +44,15 @@ router.post('/login/members', passport.authenticate('local.login', {
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
+// router.route('/dashboard/product')
+//     .all()
+//     .get(dashProduct)
+//     .post(upload.array('productImage1'), newProduct)
 
+router.post('/postcart', (req, res, next) => {
+    console.log(req.body.quantity)
+    res.redirect('/cart')
+})
 
 
 router.get('/logout', (req, res) => {

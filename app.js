@@ -50,6 +50,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//login availability to all routes
+app.use(function(req, res,next){
+  res.locals.authh = req.isAuthenticated();
+  res.locals.session = req.session;
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -57,6 +64,8 @@ app.use('/users', usersRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function (err, req, res, next) {

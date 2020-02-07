@@ -2,36 +2,6 @@ const ProductModel = require('../models/products');
 const cloudinary = require('../config/cloudinary')
 const fs = require('fs');
 
-// const multer = require('multer');
-
-// const diskStorage = multer.diskStorage({
-//   destination: './public/uploads',
-//   filename: function(req, file, cb) {
-//     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`)
-//   }
-// })
-
-// const multerOpts = {
-//   storage: diskStorage,
-//   fileFilter: function(req, file, cb) {
-//     checkFiletype(file, cb)
-//   }
-// }
-
-// function checkFiletype(file, cb) {
-//   const filetypes = /jpeg|jpg|png|gif/;
-//   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-//   const mimetype = filetypes.test(file.mimetype);
-
-//   if(mimetype && extname ){
-//     return cb(null, true); 
-//   } else {
-//     cb(new Error('Error Occured: I can onlly take in images'));
-//   }
-// }
-
-// const upload = multer(multerOpts);
-
 exports.dashboard = (req, res, next) => {
   res.render('backend/dashboard', { title: 'Dashboard' })
 }

@@ -1,11 +1,11 @@
- <!-- Header Section Begin -->
- <header class="header-section">
+<!-- Header Section Begin -->
+<header class="header-section">
     <div class="header-top">
         <div class="container">
             <div class="ht-left">
                 <div class="mail-service">
                     <i class=" fa fa-envelope"></i>
-                    <a style ="text-decoration: none;" href="mailto:mail@gmai.com">phashsupping@gmail.com</a>
+                    <a style="text-decoration: none;" href="mailto:mail@gmai.com">phashsupping@gmail.com</a>
                 </div>
                 <div class="phone-service">
                     <i class=" fa fa-phone"></i>
@@ -13,7 +13,8 @@
                 </div>
             </div>
             <div class="ht-right">
-                <a href="<%= logged  ? '/logout' : '/login' %> " class="login-panel"><i class="fa fa-user"></i><%= logged  ? 'logout' : 'login' %> </a>
+                <a href="<%= authh  ? '/logout' : '/login' %> " class="login-panel"><i
+                        class="fa fa-user"></i><%= authh ? 'logout' : 'login' %> </a>
                 <!-- <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
                         <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -148,7 +149,7 @@
                             <li><a href="/checkout">Checkout</a></li>
                             <!-- <li><a href="./faq.html">Faq</a></li> -->
                             <li><a href="./register.html">Register</a></li>
-                            <li><a href= "/logout" >logout</a></li>
+                            <li><a href="/logout">logout</a></li>
                         </ul>
                     </li>
                 </ul>
