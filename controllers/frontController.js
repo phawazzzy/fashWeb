@@ -11,9 +11,9 @@ exports.shopPage = async (req, res, next) => {
 
     await Products.find({}).then((result) => {
         if (result) {
-            res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result});
+            res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
         }
-        res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result});
+        res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
     })
 
 };
@@ -26,15 +26,18 @@ exports.contactPage = (req, res, next) => {
 };
 
 exports.productPage = async (req, res, next) => {
-    // await Products.findById({ _id: req.params.id }).then((result) => {
-    //     console.log(result)
-    // })
-
     let path = req.path;
     console.log(path)
     let pageName = 'shop';
     let subpageName = 'details';
-    res.render('frontend/product', { title: 'Phash :: Product', pageName, subpageName, path, });
+    await Products.findById({ _id: req.params.id }).then((result) => {
+        console.log(result)
+        res.render('frontend/product', { title: 'Phash :: Product', result, pageName, subpageName, path, });
+
+    })
+
+
+
 };
 
 exports.cartPage = (req, res, next) => {
