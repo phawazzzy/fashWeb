@@ -167,28 +167,28 @@
                     <!-- product list begins -->
                     <div class="product-list">
                         <div class="row">
-                            <% for(let i = 0; i< 12; i++) { %>
+                            <% for(let i = 0; i< result.length; i++) { %>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/kaliLInux.png" alt="">
+                                        <img src=" <%= result[i].productImage1 %>" alt="<%= result[i].productName %>">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                            <li class="quick-view"><a href=" /products/<%= result[i]._id %> ">+ Quick View</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
+                                        <div class="catagory-name"> <%= result[i].category %> </div>
                                         <a href="#">
-                                            <h5>Pure Pineapple</h5>
+                                            <h5> <%= result[i].productName %> </h5>
                                         </a>
                                         <div class="product-price">
-                                            $14.00
+                                            <%#= result[i].price %>
                                             <span>$35.00</span>
                                         </div>
                                     </div>

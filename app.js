@@ -11,17 +11,9 @@ const flash = require('express-flash');
 const dotenv = require('dotenv');
 dotenv.config()
 
-// const who = function(req, res, next) {
-//   if (req.user) {
-//     return 'logout';
-//   }
-//   return 'login';
-// }
-
-// app.use(who);
 
 const db_uri = 'mongodb://localhost:27017/phash';
-mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true, createIndexes: true }).then(console.log('Database connected')).catch(err => console.log(err));
+mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true}).then(console.log('Database connected')).catch(err => console.log(err));
 
 
 var indexRouter = require('./routes/index');

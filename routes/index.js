@@ -22,7 +22,7 @@ const { indexPage,
 router.get('/', indexPage);
 router.get('/shop', shopPage);
 router.get('/contact', contactPage);
-router.get('/product', productPage);
+router.get('/products/', productPage);
 router.get('/cart', cartPage);
 router.get('/checkout', checkoutPage);
 router.get('/login', loginPage);

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     productName: { type: String },
     productImage1: { type: String },
+    price: {type: Number},
     publicid1: { type: String },
     productImage2: { type: String },
     publicid2: { type: String }, 
@@ -14,6 +15,8 @@ const productSchema = new Schema({
     size: { type: String },
     category: { type: String },
     productCollection: { type: String },
+    registeredDate: { type: Date, default: Date.now }
+
     // tag: { type: String },
 })
 
