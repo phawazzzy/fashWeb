@@ -191,8 +191,8 @@
                                             <h5> <%= result[i].productName %> </h5>
                                         </a>
                                         <div class="product-price">
-                                            <%#= result[i].price %>
-                                            <span>$35.00</span>
+                                            #<%= result[i].productPrice %>
+                                            <span> <%= result.discountedPrice? `#${result.discountedPrice}` : '' %></span>
                                         </div>
                                     </div>
                                 </div>

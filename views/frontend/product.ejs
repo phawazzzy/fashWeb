@@ -179,7 +179,7 @@
                             </div>
                             <div class="pd-desc">
                                 <p> <%= result.productDescription  %> </p>
-                                <h4>$495.00 <span>629.99</span></h4>
+                                <h4> #<%= result.productPrice %> <span> <%= result.discountedPrice? result.discountedPrice : '' %><span></h4>
                             </div>
                             <div class="pd-color">
                                 <h6>Color</h6>
@@ -299,7 +299,7 @@
                                         <tr>
                                             <td class="p-catagory">Price</td>
                                             <td>
-                                                <div class="p-price">$495.00</div>
+                                                <div class="p-price"> <%= result.productPrice%></div>
                                             </td>
                                         </tr>
                                         <tr>
