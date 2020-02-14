@@ -35,7 +35,8 @@ app.use(session({
   secret: "mysecrect",
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ uri: db_uri, collection: "app_sessions" })
+  store: new MongoStore({ uri: db_uri, collection: "app_sessions" }),
+  cookie: { maxAge: 180 * 60 * 1000},
 }));
 
 app.use(flash());

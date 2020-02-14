@@ -17,6 +17,7 @@ const { indexPage,
     checkoutPage,
     loginPage,
     registerPage,
+    addToCart
 } = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
@@ -27,6 +28,8 @@ router.get('/cart', cartPage);
 router.get('/checkout', checkoutPage);
 router.get('/login', loginPage);
 router.get('/register', registerPage);
+router.post('/add-to-cart/:id', addToCart);
+
 
 router.post('/register/members', passport.authenticate('local.register', {
     successRedirect: '/',
@@ -44,10 +47,6 @@ router.post('/login/members', passport.authenticate('local.login', {
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
-// router.route('/dashboard/product')
-//     .all()
-//     .get(dashProduct)
-//     .post(upload.array('productImage1'), newProduct)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)

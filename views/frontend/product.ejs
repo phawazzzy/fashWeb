@@ -151,14 +151,14 @@
                         </div>
                         <div class="product-thumbs">
                             <div class="product-thumbs-track ps-slider owl-carousel">
-                                <div class="pt active" data-imgbigurl=" <%= result.productImage1 %>"><img
-                                        src=" <% result.productImage1 %> " alt=""></div>
-                                <div class="pt" data-imgbigurl=" <%= result.productImage2  %> " ><img
-                                        src=" <%= result.productImage2  %> " alt=""></div>
-                                <div class="pt" data-imgbigurl="  <%= result.productImage3  %> "><img
-                                        src=" <%= result.productImage3  %>" alt=""></div>
-                                <!-- <div class="pt" data-imgbigurl="img/kaliLInux.png"><img
-                                        src="img/kaliLInux.png" alt=""></div> -->
+                                <div class="pt active" data-imgbigurl="<%= result.productImage1 %>"><img
+                                        src="<%= result.productImage1 %>" alt=""></div>
+                                <div class="pt" data-imgbigurl="<%= result.productImage2 %>"><img
+                                        src="<%= result.productImage2 %>" alt=""></div>
+                                <div class="pt" data-imgbigurl="<%= result.productImage3 %>"><img
+                                        src="<%= result.productImage3 %>" alt=""></div>
+                                <div class="pt" data-imgbigurl="<%= result.productImage1 %>"><img
+                                        src="<%= result.productImage1 %>" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -216,15 +216,18 @@
                                     <label for="xl-size">xs</label>
                                 </div> -->
                             </div>
+                            <form action="/add-to-cart/<%= result._id %>" method="POST">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" placeholder ="quantity" name="quantity" value="1">
                                 </div>
-                                <a href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                <!-- <a href="" type="su" class="primary-btn pd-cart">Add To Cart</a> -->
+                                <button type="submit" class="primary-btn pd-cart">add to cart</button>
                             </div>
+                            </form>
                             <ul class="pd-tags">
                                 <li><span>CATEGORIES</span>: <%= result.category%> </li>
-                                <li><span>TAGS</span>: Clothing, T-shirt, Woman</li>
+                                <li><span>TAGS</span>: Clothing, T- shirt, Woman</li>
                             </ul>
                             <div class="pd-share">
                                 <div class="p-code">Sku : 00012</div>
@@ -527,7 +530,10 @@
 </div>
 <!-- Related Products Section End -->
 
-
+<script>
+let name = document.getElementsByName('quantity').value
+// console.log(name);
+</script>
 
   <%- include('../partials/footer.ejs', {}) %>
   <%- include('../partials/script.ejs', {}) %>
