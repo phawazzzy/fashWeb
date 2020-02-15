@@ -30,35 +30,60 @@
                                     <th><i class="ti-close"></i></th>
                                 </tr>
                             </thead>
+                            <%if (cart == undefined) { %>
+                            <tbody>
+                                <tr>
+
+                                    <td> YOU DONT HAVE ANYTHING HERE
+                                        <a href="/shop">add</a>
+                                        SOMETHING
+                                    </td>
+                                    <td> nothing </td>
+                                    <td> here</td>
+                                    <td> please </td>
+                                    <td>
+                                        <a href="/shop">add</a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                            <% }else { %>
                             <tbody>
                                 <form action="/postcart" method="post">
 
-                                <% for (let i = 0; i < 6; i++) { %>
-                                <tr>
-                                    <td class="cart-pic first-row"><img src="img/kaliLInux.png" alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5>Pure Pineapple</h5>
-                                    </td>
-                                    <td class="p-price first-row">$60.00</td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                    <input type="text" id='quantity' name='quantity' value="1">
+                                    <% for (let i = 0; i < cart.length; i++) { %>
+                                    <tr>
+                                        <td class="cart-pic first-row"><img src=" <%= cart[i].productImage1%>" alt="">
+                                        </td>
+                                        <td class="cart-title first-row">
+                                            <h5> <%- cart[i].productName %> </h5>
+                                        </td>
+                                        <td class="p-price first-row" id="price"> <%= cart[i].productPrice %> </td>
+                                        <td class="qua-col first-row">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" id='quantity' class="quantity" name='quantity'
+                                                        value="<%= priceDetails[i].qty %>" disabled>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price first-row">$60.00</td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
-                                </tr>
+                                        </td>
+                                        <td class="total-price first-row total">
+                                            <%= priceDetails[i].price %>
+                                        </td>
+                                        <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    </tr>
 
-                                <% } %>
+                                    <% } %>
                             </tbody>
+                            <% } %>
+
                         </table>
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="/shop" class="primary-btn continue-shop">Continue shopping</a>
                                 <a href="#" class="primary-btn up-cart">Update cart</a>
                             </div>
                             <div class="discount-coupon">
@@ -72,8 +97,9 @@
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
+                                    <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
+                                    <li class="cart-total">Total
+                                        <span>#<%- session.totalPrice ? session.totalPrice : 0 %></span></li>
                                 </ul>
                                 <button type="submit"><a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
                             </div>
@@ -85,6 +111,29 @@
     </section>
     <!-- Shopping Cart Section End -->
 
+    <!-- <script>
+        let cartt = '<%#- cartt %>';
+        for (let i = 0; i < cart.length; i++) {
+            let eachValue = document.getElementsByName('quantity').value
+            let toatal = eachValue * cart[i].productPrice
+            console.log(eachValue)
+        }
+    </script> -->
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            var Price = document.getElementById('price').value
+            let eachValue = document.getElementsByClassName('quantity').value
+            let total = eachValue * Price
+            let okay = document.getElementsByClassName('total').innerHtml = total
+            console.log(okay)
+            console.log("price", Price)
+            console.log("eaach", eachValue)
+
+
+        })
+    </script>
 
     <%- include('../partials/footer.ejs', {}) %>
     <%- include('../partials/script.ejs', {}) %>
