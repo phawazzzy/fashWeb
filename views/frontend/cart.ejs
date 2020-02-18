@@ -57,9 +57,9 @@
                                         <td class="cart-pic first-row"><img src=" <%= cart[i].productImage1%>" alt="">
                                         </td>
                                         <td class="cart-title first-row">
-                                            <h5> <%- cart[i].productName %> </h5>
+                                            <h5> <%= cart[i].productName %> </h5>
                                         </td>
-                                        <td class="p-price first-row" id="price"> <%= cart[i].productPrice %> </td>
+                                        <td class="p-price first-row" id="price"> #<%= cart[i].productPrice %> </td>
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
@@ -69,7 +69,7 @@
                                             </div>
                                         </td>
                                         <td class="total-price first-row total">
-                                            <%= priceDetails[i].price %>
+                                            #<%= priceDetails[i].price %>
                                         </td>
                                         <td class="close-td first-row"><i class="ti-close"></i></td>
                                     </tr>
@@ -89,7 +89,7 @@
                             <div class="discount-coupon">
                                 <h6>Discount Codes</h6>
                                 <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
+                                    <input type="text" placeholder="Enter your codes" disabled>
                                     <button type="submit" class="site-btn coupon-btn">Apply</button>
                                 </form>
                             </div>
@@ -99,9 +99,9 @@
                                 <ul>
                                     <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">Total
-                                        <span>#<%- session.totalPrice ? session.totalPrice : 0 %></span></li>
+                                        <span> #<%- session.totalPrice ? session.totalPrice : 0 %></span></li>
                                 </ul>
-                                <button type="submit"><a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
+                                <button type="submit"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
                             </div>
                         </div>
                     </div>
@@ -110,30 +110,6 @@
         </div>
     </section>
     <!-- Shopping Cart Section End -->
-
-    <!-- <script>
-        let cartt = '<%#- cartt %>';
-        for (let i = 0; i < cart.length; i++) {
-            let eachValue = document.getElementsByName('quantity').value
-            let toatal = eachValue * cart[i].productPrice
-            console.log(eachValue)
-        }
-    </script> -->
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded', (e) => {
-            var Price = document.getElementById('price').value
-            let eachValue = document.getElementsByClassName('quantity').value
-            let total = eachValue * Price
-            let okay = document.getElementsByClassName('total').innerHtml = total
-            console.log(okay)
-            console.log("price", Price)
-            console.log("eaach", eachValue)
-
-
-        })
-    </script>
 
     <%- include('../partials/footer.ejs', {}) %>
     <%- include('../partials/script.ejs', {}) %>

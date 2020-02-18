@@ -1,9 +1,7 @@
 const Products = require('../models/products')
 const Cart = require('../models/cart')
-exports.indexPage = (req, res, next) => {
 
-    let check = (req.user) ? console.log('user  in') : console.log('user not ')
-    // console.log(._id)
+exports.indexPage = (req, res, next) => {
     res.render('frontend/index', { title: 'Phash :: Home', });
 };
 
@@ -11,7 +9,7 @@ exports.shopPage = async (req, res, next) => {
     let pageName = 'Shop';
 
     await Products.find({}).then((result) => {
-        console.log(result)
+        // console.log(result)
         if (result) {
             res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
         }
@@ -21,8 +19,6 @@ exports.shopPage = async (req, res, next) => {
 };
 
 exports.contactPage = (req, res, next) => {
-
-
     let pageName = 'contact';
     res.render('frontend/contact', { title: 'Phash :: Contact', pageName, });
 };
@@ -86,13 +82,11 @@ exports.addToCart = async (req, res) => {
     })
 };
 
-
-
 exports.cartPage = (req, res, next) => {
     let pageName = 'shop';
     let subpageName = 'shopping cart';
     const cart = req.session.cart
-    console.log(cart)
+    // console.log(cart)
     if (cart == undefined) {
         res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, cart: cart, });
     }
@@ -123,15 +117,22 @@ exports.cartPage = (req, res, next) => {
         }
     })
 
+
+    console.log("de", orderDetail)
+
     let priceDetails = priceArray.map(doc => {
         return {
             price: doc.u,
             qty: doc.qty
         }
     })
-    console.log("priceDetails", priceDetails)
-    console.log("orderDetails", orderDetail)
-    console.log("newArray", newArray)
+    req.session.orderDetail = orderDetail
+    req.session.priceDetails = priceDetails
+
+    // console.log("priceDetails", priceDetails)
+    // console.log("orderDetails", orderDetail)
+    // console.log("newArray", newArray)
+    console.log(req.session)
 
 
     res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, cart: orderDetail, priceDetails });
@@ -139,11 +140,60 @@ exports.cartPage = (req, res, next) => {
 
 
 exports.checkoutPage = (req, res, next) => {
-
-
+    const cart = req.session.cart
+    // console.log(" dettt",orderDetail)
+    // console.log("seeesss", cart)
     let pageName = 'checkout';
     let subpageName = '';
-    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, });
+    if (cart == undefined) {
+        res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, });
+    }
+
+    let arr = Object.entries(cart.items);
+    let array = arr.map((doc) => {
+        return doc[1];
+    })
+
+    let newArray = []
+    let priceArray = []
+    array.forEach(data => {
+        newArray.push(data.item)
+    })
+
+    array.forEach(data => {
+        let qty = data.qty
+        let u = data.qty * data.pricePerOne
+        priceArray.push({ u, qty })
+    })
+
+   let orderDetail = newArray.map(doc => {
+        return {
+            id: doc._id,
+            productName: doc.productName,
+            productImage1: doc.productImage1,
+            productPrice: doc.productPrice,
+
+        }
+    })
+
+
+    console.log("de" ,orderDetail)
+
+   let priceDetails = priceArray.map(doc => {
+        return {
+            price: doc.u,
+            qty: doc.qty
+        }
+    })
+
+    let price = priceArray.map(doc => {
+        return {
+        total : doc.u * doc.qty
+        }
+    })
+
+    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart: orderDetail, priceDetails, price });
+
 };
 
 exports.loginPage = (req, res, next) => {
