@@ -62,7 +62,7 @@
                         <li class="cart-icon">
                             <a href="#">
                                 <i class="icon_bag_alt"></i>
-                                <span> <%- session.sumOfQuantity %></span>
+                                <span> <%- session.sumOfQuantity ? session.sumOfQuantity : 0 %></span>
                             </a>
                             <div class="cart-hover">
                                 <div class="select-items">
@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="cart-price"> #<%- session.totalPrice %> </li>
+                        <li class="cart-price"> #<%- session.totalPrice ? session.totalPrice : 0 %> </li>
                     </ul>
                 </div>
             </div>

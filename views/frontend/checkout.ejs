@@ -80,13 +80,14 @@
                     <div class="order-total">
                         <ul class="order-table">
                             <li>Product <span>Total</span></li>
-                            <% for(i=0; i<10; i++) { %>
+                            <% for (let i = 0; i < cart.length; i++) { %>
+                            
 
                             
-                            <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
+                            <li class="fw-normal"><%= cart[i].productName %>  x <%= priceDetails[i].qty %> <span> NGN <%= price[i].total %></span></li>
                             
                                 <% } %>
-                                <li class="total-price">Total <span>$240.00</span></li>
+                                <li class="total-price">Total <span>NGN <%= session.totalPrice ? session.totalPrice : 0 %></span></li>
 
                         </ul>
                         <div class="payment-check">
@@ -116,6 +117,11 @@
         </form>
       </div>
     </section>
+
+    <form>
+        <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+        <button type="button" onClick="payWithRave()">Pay Now</button>
+    </form>
 
     <!-- /shooping cart section end -->
 

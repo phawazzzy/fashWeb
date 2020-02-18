@@ -7,8 +7,9 @@ module.exports = function Cart(oldCart) {
         var storedItem = this.items[id]
         // var oneItemPrice = itemPrice * qty
         // console.log(oneItemPrice)
-        storedItem = this.items[id] = {item: item, qty: qty, price: itemPrice}
-
+        storedItem = this.items[id] = {item: item, qty: qty, pricePerOne: itemPrice}
+        this.totalPrice
+        this.totalQty 
     }
     // console.log("carpricepricepricerrr", typeof this.items, this.items)
 
@@ -16,7 +17,7 @@ module.exports = function Cart(oldCart) {
         var arr = []
         for (var id in this.items) {
             arr.push(this.items[id]);
-        }s
+        }
         return arr;
     };
 };
