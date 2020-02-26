@@ -17,7 +17,10 @@ const { indexPage,
     checkoutPage,
     loginPage,
     registerPage,
-    addToCart
+    addToCart,
+    cleanCart,
+    paystackPay,
+    paystackCallback
 } = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
@@ -29,8 +32,10 @@ router.get('/checkout', checkoutPage);
 router.get('/login', loginPage);
 router.get('/register', registerPage);
 router.post('/add-to-cart/:id', addToCart);
+router.post("/paystackPay", paystackPay)
+router.get('/paystack/callback', paystackCallback)
 
-
+router.get('/cleanCart', cleanCart);
 router.post('/register/members', passport.authenticate('local.register', {
     successRedirect: '/',
     failureRedirect: '/register',

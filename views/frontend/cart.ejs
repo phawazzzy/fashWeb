@@ -71,7 +71,7 @@
                                         <td class="total-price first-row total">
                                             #<%= priceDetails[i].price %>
                                         </td>
-                                        <td class="close-td first-row"><i class="ti-close"></i></td>
+                                        <td class="close-td first-row"><i class="ti-close" onclick="removeFromSession()"></i></td>
                                     </tr>
 
                                     <% } %>
@@ -101,7 +101,13 @@
                                     <li class="cart-total">Total
                                         <span> #<%- session.totalPrice ? session.totalPrice : 0 %></span></li>
                                 </ul>
-                                <button type="submit"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
+                                
+                                    <%if (cart == undefined) { %>
+                                    <button type="submit" style="display: none;"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
+                                    <% }else { %>
+                                    <button type="submit"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
+
+                                    <% } %>
                             </div>
                         </div>
                     </div>

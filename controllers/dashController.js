@@ -5,7 +5,6 @@ const fs = require('fs');
 exports.dashboard = (req, res, next) => {
   res.render('backend/dashboard', { title: 'Dashboard' })
 }
-
 exports.dashProduct = (req, res, next) => {
   let ImageError = req.flash('imageError')
   let success = req.flash('success')
