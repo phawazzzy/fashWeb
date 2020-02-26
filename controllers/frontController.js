@@ -1,5 +1,10 @@
 const Products = require('../models/products')
 const Cart = require('../models/cart')
+const _ = require('lodash');
+const request = require('request');
+const { initializePayment, verifyPayment } = require('../config/paystack')(request)
+const Order = require('../models/orders')
+
 
 exports.indexPage = (req, res, next) => {
     res.render('frontend/index', { title: 'Phash :: Home', });
@@ -86,10 +91,12 @@ exports.cartPage = (req, res, next) => {
     let pageName = 'shop';
     let subpageName = 'shopping cart';
     const cart = req.session.cart
-    // console.log(cart)
-    if (cart == undefined) {
+    console.log(cart)
+    if (cart == {} || req.session.cart == null || cart == undefined) {
+        console.log('okkkkkaakakak')
         res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, cart: cart, });
     }
+
     let arr = Object.entries(cart.items);
     let array = arr.map((doc) => {
         return doc[1];
@@ -141,12 +148,11 @@ exports.cartPage = (req, res, next) => {
 
 exports.checkoutPage = (req, res, next) => {
     const cart = req.session.cart
-    // console.log(" dettt",orderDetail)
-    // console.log("seeesss", cart)
     let pageName = 'checkout';
     let subpageName = '';
-    if (cart == undefined) {
-        res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, });
+    if (cart == null) {
+        console.log('empty cart')
+        res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart });
     }
 
     let arr = Object.entries(cart.items);
@@ -162,11 +168,11 @@ exports.checkoutPage = (req, res, next) => {
 
     array.forEach(data => {
         let qty = data.qty
-        let u = data.qty * data.pricePerOne
+        let u = data.pricePerOne
         priceArray.push({ u, qty })
     })
 
-   let orderDetail = newArray.map(doc => {
+    let orderDetail = newArray.map(doc => {
         return {
             id: doc._id,
             productName: doc.productName,
@@ -175,26 +181,107 @@ exports.checkoutPage = (req, res, next) => {
 
         }
     })
+    console.log("ede", orderDetail)
 
-
-    console.log("de" ,orderDetail)
-
-   let priceDetails = priceArray.map(doc => {
+    let priceDetails = priceArray.map(doc => {
         return {
             price: doc.u,
+            qty: doc.qty,
+            total: doc.u * doc.qty
+        }
+    })
+    console.log(priceDetails)
+
+    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart: orderDetail, priceDetails });
+
+};
+
+exports.paystackPay = (req, res, next) => {
+    let arr = Object.entries(req.session.cart.items);
+    let array = arr.map((doc) => {
+        return doc[1];
+    })
+    let newArray = []
+    let priceArray = []
+    array.forEach(data => {
+        newArray.push(data.item._id)
+    })
+    array.forEach(data => {
+        let qty = data.qty
+        let u = data.pricePerOne
+        priceArray.push({ u, qty })
+    })
+
+    let quantity = priceArray.map(doc => {
+        return {
             qty: doc.qty
         }
     })
-
-    let price = priceArray.map(doc => {
-        return {
-        total : doc.u * doc.qty
+    console.log(req.body, newArray, quantity)
+    const form = _.pick(req.body, ['amount', 'email', 'firstname', 'lastname', 'country', 'street1', 'street2', 'postcode', 'town', 'phone'])
+    form.metadata = {
+        firstname: form.firstname,
+        lastname: form.lastname,
+        country: form.country,
+        street1: form.street1,
+        street2: form.street2,
+        postcode: form.postcode,
+        town: form.town,
+        phone: form.phonenum,
+        email: form.email,
+        products: newArray,
+        qty: quantity
+    }
+    form.amount *= 100
+    initializePayment(form, (error, body) => {
+        if (error) {
+            console.log(error)
+            return res.render('/frontend/error')
         }
+        response = JSON.parse(body);
+        console.log(body)
+        res.redirect(response.data.authorization_url)
+    });
+}
+
+exports.paystackCallback = (req, res, next) => {
+    const ref = req.query.reference
+    verifyPayment(ref, (error, body) => {
+        if (error) {
+            console.log(error)
+            return res.redirect('/frontend/error');
+        }
+        response = JSON.parse(body);
+        console.log(response)
+
+        const newOrder = {
+            paymentRef: response.data.reference,
+            orderDetails: response.data.metadata,
+            // products: response.data.metadata.products
+        }
+
+        console.log(newOrder)
+
+        Order.create(newOrder).then(result => {
+            if (!result) {
+                console.log('there was an error')
+                res.redirect('/checkout')
+            }
+            console.log('saved')
+            req.flash('saved', 'you order has been saved')
+            res.redirect('/cleanCart')
+
+        })
+
     })
-
-    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart: orderDetail, priceDetails, price });
-
-};
+}
+exports.cleanCart = (req, res, next) => {
+    req.session.cart = null
+    req.session.sumOfQuantity = 0
+    req.session.totalPrice = 0
+    console.log(req.session.cart)
+    res.redirect('/');
+}
 
 exports.loginPage = (req, res, next) => {
 

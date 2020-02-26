@@ -11,52 +11,57 @@
     <!-- shooping cart -->
     <section class="checkout-section spad">
       <div class="container">
-        <form action="#" method="post" class="checkout-form">
+        <form action="/paystackPay" method="post" class="checkout-form">
           <div class="row">
               <!-- billing details start -->
               <div class="col-lg-6">
                 <div class="checkout-content">
-                    <a href="#" class="content-btn">Click Here To Login</a>
+                    <a href="/login" class="content-btn">Click Here To Login</a>
                 </div>
                 <h4>Biiling Details</h4>
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="fir">First Name<span>*</span></label>
-                        <input type="text" id="fir" required>
+                        <input type="text" id="fir" name="firstname" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="last">Last Name<span>*</span></label>
-                        <input type="text" id="last" required>
+                        <input type="text" id="last" name="lastname" required>
                     </div>
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <label for="cun-name">Company Name</label>
                         <input type="text" id="cun-name" >
-                    </div>
+                    </div> -->
                     <div class="col-lg-12">
                         <label for="cun">Country<span>*</span></label>
-                        <input type="text" id="cun" value="Nigeria">
+                        <input type="text" id="cun" name="country" value="Nigeria">
                     </div>
                     <div class="col-lg-12">
                         <label for="street">Street Address<span>*</span></label>
-                        <input type="text" id="street" class="street-first" required>
-                        <input type="text">
+                        <input type="text" id="street" name="street1" class="street-first" required>
+                        <input type="text" name="street2">
                     </div>
                     <div class="col-lg-12">
                         <label for="zip">Postcode / ZIP (optional)</label>
-                        <input type="text" id="zip">
+                        <input type="text"  name="postcode" id="zip">
                     </div>
                     <div class="col-lg-12">
                         <label for="town">Town / City<span>*</span></label>
-                        <input type="text" id="town">
+                        <input type="text" name="town" id="town">
                     </div>
                     <div class="col-lg-6">
                         <label for="email">Email Address<span>*</span></label>
-                        <input type="text" id="email" required>
+                        <input type="text" id="email" name="email" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="phone">Phone<span>*</span></label>
-                        <input type="number" id="phone" required> 
+                        <input type="number" id="phone" name="phonenum" required> 
                     </div>
+                    <div class="col-lg-6" hidden>
+                        <label for="phone">Amount<span>*</span></label>
+                        <input type="number" id="phone" name="amount" value="<%= session.totalPrice ? session.totalPrice : 0 %>" >  
+                    </div>
+                                     
                     <div class="col-lg-12">
                         <div class="create-item">
                             <label for="acc-create">
@@ -84,13 +89,13 @@
                             
 
                             
-                            <li class="fw-normal"><%= cart[i].productName %>  x <%= priceDetails[i].qty %> <span> NGN <%= price[i].total %></span></li>
+                            <li name="product" class="fw-normal"><%= cart[i].productName %>  x <%= priceDetails[i].qty %> <span> NGN <%= priceDetails[i].total %></span></li>
                             
                                 <% } %>
-                                <li class="total-price">Total <span>NGN <%= session.totalPrice ? session.totalPrice : 0 %></span></li>
+                                <li class="total-price" name="amount"  >Total <span>NGN <%= session.totalPrice ? session.totalPrice : 0 %></span></li>
 
                         </ul>
-                        <div class="payment-check">
+                        <!-- <div class="payment-check">
                             <div class="pc-item">
                                 <label for="pc-check">
                                     Cheque Payment
@@ -105,7 +110,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="order-btn">
                             <button type="submit" class="site-btn place-btn">Place Order</button>
                         </div>
@@ -114,14 +119,12 @@
             </div>
               <!-- product ordered section ends -->
           </div>
-        </form>
+        </form>                                                                                                                                                 
       </div>
-    </section>
+      <!-- <a href="/cleanCart"> <button type="" class="site-btn place-btn">Place Order</button> </a> -->
 
-    <form>
-        <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-        <button type="button" onClick="payWithRave()">Pay Now</button>
-    </form>
+    </section>
+   
 
     <!-- /shooping cart section end -->
 
