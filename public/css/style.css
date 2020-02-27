@@ -818,6 +818,7 @@ ol {
 .hero-items .single-hero-items {
 	height: 725px;
 	padding-top: 210px;
+	background-repeat:no-repeat ;
 }
 
 .hero-items .single-hero-items span {
@@ -4176,7 +4177,7 @@ ol {
 	.hero-items .single-hero-items {
 		padding: 110px 25px 80px;
 		height: auto;
-		background: left center;
+		/* background: left center; */
 	}
 	.hero-items .single-hero-items h1 {
 		font-size: 40px;

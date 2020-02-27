@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3">
                     <h1 class="h2 rw">Edit Page Content: <span class="text-info">New Product</span></h1>
                 </div>
-                <form action="/post/dashboard/product" method="post" enctype="multipart/form-data">
+                <form action="/post/dashboard/product" method="post" enctype="multipart/form-data" id="productadd">
                     <%#- success ? success : '' %>
 
                     <%- include('./fields/text.ejs', {fieldname: 'productName', fieldlabel: 'Product Name', fieldplaceholder: 'PRODUCT NAME HERE', valueField: ''}) %>
@@ -25,7 +25,7 @@
                     <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image side view', fieldPlaceholder: 'side view image', valueField: '' }) %>
                     <br>
                     <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product Description', valueField: '' }) %>
-                    <%- include('./fields/text.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: '' }) %>
+                    <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ', valueField: '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', fieldplaceholder: 'Product Collection here', valueField: '' }) %>
@@ -34,7 +34,7 @@
 
                     <div class="col-sm-10 ml-md-auto pl-0">
 
-                        <%- include('./fields/button.ejs', {fieldvalue: 'CREATE PRODUCT'}) %>
+                        <%- include('./fields/button.ejs', {fieldvalue: 'CREATE PRODUCT', fieldname: 'submit'}) %>
                     </div>
                 </form>
             </div>
@@ -46,7 +46,21 @@
             <!-- /footer -->
         </div>
     </div>
+    <script>
+        const productForm = document.getElementById('productadd');
+        const productPriceField = document.getElementById('productPrice');
+        const submitButton = document.getElementById('submit');
 
+        productPriceField.addEventListener('keyup', (e)=> {
+            isValid = productPriceField.checkValidity();
+
+            if(isValid) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        })
+    </script>
     <%- include('./partials/script.ejs', {}) %>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
@@ -55,6 +69,12 @@
             icon: "success",
 				text: "<%=success%>"
           })
+       }
+       if('<%-failure%>'){
+           swal({
+               icon: "error",
+               text: "<%=failure%>"
+           })
        }
     </script>
 </body>

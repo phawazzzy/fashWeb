@@ -244,9 +244,9 @@ exports.paystackPay = (req, res, next) => {
     });
 }
 
-exports.paystackCallback = (req, res, next) => {
+exports.paystackCallback =  (req, res, next) => {
     const ref = req.query.reference
-    verifyPayment(ref, (error, body) => {
+    verifyPayment(ref,  async (error, body) => {
         if (error) {
             console.log(error)
             return res.redirect('/frontend/error');
@@ -257,12 +257,14 @@ exports.paystackCallback = (req, res, next) => {
         const newOrder = {
             paymentRef: response.data.reference,
             orderDetails: response.data.metadata,
+            createdDate: response.data.created_at,
+            paidDate: response.data.paid_at
             // products: response.data.metadata.products
         }
 
         console.log(newOrder)
 
-        Order.create(newOrder).then(result => {
+      await Order.create(newOrder).then(result => {
             if (!result) {
                 console.log('there was an error')
                 res.redirect('/checkout')

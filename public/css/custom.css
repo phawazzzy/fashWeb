@@ -1,0 +1,6 @@
+/* .form-control:valid {
+    border-color: black;
+} */
+.form-control:invalid {
+    border-color: red;
+}
