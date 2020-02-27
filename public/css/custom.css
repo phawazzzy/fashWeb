@@ -4,3 +4,16 @@
 .form-control:invalid {
     border-color: red;
 }
+
+#email:invalid {
+    border-color: red;
+}
+
+.passnotmatch {
+    display: block;
+    color: red;
+}
+
+.passmatch {
+    display: none;
+}

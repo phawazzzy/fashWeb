@@ -37,31 +37,31 @@
                         <%- message ? message : '' %>
                         <form action="/register/members" method="POST">
                             <div class="group-input">
-                                <label for="username">Firstname *</label>
+                                <label for="firstname">Firstname *</label>
                                 <input type="text" id="username" name="firstname" required> 
                             </div>
                             <div class="group-input">
-                                <label for="username">Lastname *</label>
+                                <label for="lastname">Lastname *</label>
                                 <input type="text" id="username" name="lastname" required>
                             </div>
                             <div class="group-input">
-                                <label for="username">Email *</label>
-                                <input type="email" id="username" name="email" required>
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
                             </div>
                             <div class="group-input">
-                                <label for="username">Phone Number *</label>
+                                <label for="phonenum">Phone Number *</label>
                                 <input type="text" id="username" name="phone" required>
                             </div>
                             <div class="group-input">
                                 <label for="pass">Password *</label>
                                 <input type="password" id="pass" name="password" required>
                             </div>
-                            
+                            <span id="passmatch" class="passmatch"> Password not match </span>
                             <div class="group-input">
                                 <label for="con-pass">Confirm Password *</label>
                                 <input type="password" id="con-pass">
                             </div>
-                            <button type="submit" class="site-btn register-btn">REGISTER</button>
+                            <button type="submit" id="submit" class="site-btn register-btn" disabled >REGISTER</button>
                         </form>
                         <div class="switch-login">
                             <a href="/login" class="or-login">Or Login</a>
@@ -71,41 +71,8 @@
             </div>
         </div>
     </div>
-    <!-- Register Form Section End -->
     
-    <!-- Partner Logo Section Begin -->
-    <!-- <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Partner Logo Section End -->
+
 
     <!-- Footer Section Begin -->
     
@@ -113,7 +80,36 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-   
+   <script>
+       const emailField = document.getElementById('email');
+       const submitButton = document.getElementById('submit');
+       const ConfirmPass = document.getElementById('con-pass');
+       const password = document.getElementById('pass')
+       const passNotMatch = document.getElementById('passmatch')
+
+       emailField.addEventListener('keyup', (e)=> {
+           isValid = emailField.checkValidity()
+
+           if(isValid) {
+               submitButton.disabled = false;
+           } else{
+               submitButton.disabled = true
+           }
+       })
+
+       ConfirmPass.addEventListener('keyup', (e)=> {
+           isValid = password.value === ConfirmPass.value
+
+           if(isValid) {
+            passNotMatch.style.display = 'none'
+               submitButton.disabled = false
+           } else {
+            passNotMatch.style.display = 'block'
+            passNotMatch.style.color = 'red'
+               submitButton.disabled = true
+           }
+       })
+   </script>
     <%- include('../partials/script.ejs', {}) %>
 </body>
 
