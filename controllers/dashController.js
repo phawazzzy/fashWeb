@@ -1,9 +1,13 @@
 const ProductModel = require('../models/products');
 const cloudinary = require('../config/cloudinary')
 const fs = require('fs');
+const Order = require('../models/orders')
+const Products = require('../models/products')
 
-exports.dashboard = (req, res, next) => {
-  res.render('backend/dashboard', { title: 'Dashboard' })
+exports.dashboard = async (req, res, next) => {
+ let result = await Order.find({})
+ let result2 = await Products.find({})
+  res.render('backend/dashboard', { title: 'Dashboard', result, result2 })
 }
 exports.dashProduct = (req, res, next) => {
   let ImageError = req.flash('imageError')
@@ -12,8 +16,6 @@ exports.dashProduct = (req, res, next) => {
   res.render('backend/products', { title: 'Add new products', failure, success, ImageError })
 }
 exports.newProduct = async (req, res, next) => {
-  // console.log(req.files[0].path)
-  // console.log(singless)
   let productDetails = {
     productName: req.body.productName,
     productDescription: req.body.productDescription,
