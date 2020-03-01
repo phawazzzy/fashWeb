@@ -5,16 +5,13 @@ const request = require('request');
 const { initializePayment, verifyPayment } = require('../config/paystack')(request)
 const Order = require('../models/orders')
 
-
 exports.indexPage = async (req, res, next) => {
-    await Products.find({}).then((result) => {
-        // console.log(result)
-        if (result) {
-            res.render('frontend/index', { title: 'Phash :: Shop', result });
-        }
-        res.render('frontend/index', { title: 'Phash :: Shop',  result: {} });
-    })
-};
+  let result2 = await Products.find({ 'category': 'women' });
+  let result = await Products.find({ 'category': 'men' });
+//   console.log(women)
+    res.render('frontend/index', { title: 'phash', result: result, result2: result2 })
+
+}
 
 exports.shopPage = async (req, res, next) => {
     let pageName = 'Shop';
