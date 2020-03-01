@@ -1,147 +1,151 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/head.ejs', {title}) %>
+<%- include('../partials/head.ejs', {title}) %>
+
 <body>
-  <%- include('../partials/loader.ejs', {}) %>
+    <%- include('../partials/loader.ejs', {}) %>
     <!-- header -->
     <%- include('../partials/header.ejs', {}) %>
     <!-- /header -->
     <!-- main -->
-  <!-- ------------------------------------- -->
+    <!-- ------------------------------------- -->
 
-   <!-- Hero Section Begin -->
-   <section class="hero-section">
-    <div class="hero-items owl-carousel">
-        <div class="single-hero-items set-bg" data-setbg="img/pic1.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <span>stylish clothes</span>
-                        <h1>Phash Fashion</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore</p>
-                        <a href="/shop" class="primary-btn">Shop Now</a>
+    <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-items set-bg" data-setbg="img/pic1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span>stylish clothes</span>
+                            <h1>Phash Fashion</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore</p>
+                            <a href="/shop" class="primary-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="off-card">
+                        <h2>Buy <span>now</span></h2>
                     </div>
                 </div>
-                <div class="off-card">
-                    <h2>Buy <span>now</span></h2>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="img/pic5.jpeg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span>stylish clothes</span>
+                            <h1>Phash Fashion</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore</p>
+                            <a href="/shop" class="primary-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="off-card">
+                        <h2>Order<span>now</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="img/pic6.jpeg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span>stylish clothes</span>
+                            <h1>Phash Fashion</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore</p>
+                            <a href="/shop" class="primary-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="off-card">
+                        <h2>Sale <span>50%</span></h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="single-hero-items set-bg" data-setbg="img/pic5.jpeg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <span>stylish clothes</span>
-                        <h1>Phash Fashion</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore</p>
-                        <a href="/shop" class="primary-btn">Shop Now</a>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Banner Section Begin -->
+    <div class="banner-section spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic1.jpg" alt="image">
+                        <div class="inner-text">
+                            <h4>Men’s</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="off-card">
-                    <h2>Order<span>now</span></h2>
-                </div>
-            </div>
-        </div>
-        <div class="single-hero-items set-bg" data-setbg="img/pic6.jpeg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <span>stylish clothes</span>
-                        <h1>Phash Fashion</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore</p>
-                        <a href="/shop" class="primary-btn">Shop Now</a>
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic5.jpeg" alt="clothe image">
+                        <div class="inner-text">
+                            <h4>Women’s</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="off-card">
-                    <h2>Sale <span>50%</span></h2>
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic6.jpeg" alt="model image">
+                        <div class="inner-text">
+                            <h4>Kid’s</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- Hero Section End -->
+    <!-- Banner Section End -->
 
-<!-- Banner Section Begin -->
-<div class="banner-section spad">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="single-banner">
-                    <img src="img/pic1.jpg" alt="image">
-                    <div class="inner-text">
-                        <h4>Men’s</h4>
+    <!-- Women Banner Section Begin -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="img/pic1.jpg">
+                        <h2>Women’s</h2>
+                        <a href="/shop/woman">Discover More</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-banner">
-                    <img src="img/pic5.jpeg" alt="clothe image">
-                    <div class="inner-text">
-                        <h4>Women’s</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-banner">
-                    <img src="img/pic6.jpeg" alt="model image">
-                    <div class="inner-text">
-                        <h4>Kid’s</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Banner Section End -->
-
- <!-- Women Banner Section Begin -->
- <section class="women-banner spad">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="product-large set-bg" data-setbg="img/pic1.jpg">
-                    <h2>Women’s</h2>
-                    <a href="#">Discover More</a>
-                </div>
-            </div>
-            <div class="col-lg-8 offset-lg-1">
-                <div class="filter-control">
-                    <ul>
-                        <li class="active">Clothings</li>
-                        <li>HandBag</li>
+                <div class="col-lg-8 offset-lg-1">
+                    <div class="filter-control">
+                        <ul>
+                            <li class="active">Women Clothings</li>
+                            <!-- <li>HandBag</li>
                         <li>Shoes</li>
-                        <li>Accessories</li>
-                    </ul>
-                </div>
-                <div class="product-slider owl-carousel">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/kaliLInux.png" alt="">
-                            <div class="sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
-                            </div>
-                        </div>
+                        <li>Accessories</li> -->
+                        </ul>
                     </div>
-                    <div class="product-item">
+                    <div class="product-slider owl-carousel">
+                        <%for (var i = 5; i >= 0; --i) { %>
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="<%= result[i].productImage1%>" alt="">
+                                    <div class="sale">Sale</div>
+                                    <div class="icon">
+                                        <i class="icon_heart_alt"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a href="/products/<%= result[i]._id %>">+ Quick View</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Coat</div>
+                                    <a href="#">
+                                        <h5> <%= result[i].productName %></h5>
+                                    </a>
+                                    <div class="product-price">
+                                        $14.00
+                                        <span>$35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                   
+                    <!-- <div class="product-item">
                         <div class="pi-pic">
                             <img src="img/kaliLInux.png" alt="">
                             <div class="icon">
@@ -206,7 +210,7 @@
                                 $34.00
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -258,10 +262,10 @@
             <div class="col-lg-8">
                 <div class="filter-control">
                     <ul>
-                        <li class="active">Clothings</li>
-                        <li>HandBag</li>
+                        <li class="active">Men Clothings</li>
+                        <!-- <li>HandBag</li>
                         <li>Shoes</li>
-                        <li>Accessories</li>
+                        <li>Accessories</li> -->
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel">
@@ -372,6 +376,7 @@
 
     <!-- /main -->
     <%- include('../partials/footer.ejs', {}) %>
-    <%- include('../partials/script.ejs', {}) %>
-  </body>
+                        <%- include('../partials/script.ejs', {}) %>
+</body>
+
 </html>

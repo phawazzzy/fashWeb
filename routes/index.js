@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const upload = require('../middlewares/fileUpload');
+const isloggedin = require('../middlewares/isloggedin')
+
 
 const { dashboard,
     dashProduct,
@@ -20,7 +22,8 @@ const { indexPage,
     addToCart,
     cleanCart,
     paystackPay,
-    paystackCallback
+    paystackCallback,
+    shopPageTag
 } = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
@@ -28,12 +31,13 @@ router.get('/shop', shopPage);
 router.get('/contact', contactPage);
 router.get('/products/:id', productPage);
 router.get('/cart', cartPage);
-router.get('/checkout', checkoutPage);
+router.get('/checkout', isloggedin, checkoutPage);
 router.get('/login', loginPage);
 router.get('/register', registerPage);
 router.post('/add-to-cart/:id', addToCart);
 router.post("/paystackPay", paystackPay)
 router.get('/paystack/callback', paystackCallback)
+router.get('/shop/:tag', shopPageTag)
 
 router.get('/cleanCart', cleanCart);
 router.post('/register/members', passport.authenticate('local.register', {
