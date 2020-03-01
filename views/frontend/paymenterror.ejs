@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        AN error occured with the payment ..please check your internet connection or <button id='btnRefresh'>  reload </button> the page 
+    </h1>
+</body>
+
+<script>
+    let  btnRefresh = document.querySelector('#btnRefresh');
+
+    function refreshpage(){
+        window.location.reload()
+    }
+        btnRefresh.addEventListener('click', ()=> {
+        refreshpage()
+        })
+</script>
+</html>

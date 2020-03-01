@@ -26,9 +26,10 @@
                     <br>
                     <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product Description', valueField: '' }) %>
                     <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: '' }) %>
-                    <%- include('./fields/text.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ', valueField: '' }) %>
+                    <%- include('./fields/size.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', fieldplaceholder: 'Product Collection here', valueField: '' }) %>
+                    <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection',}) %>
                     
                     <hr class="my-4"/>
 

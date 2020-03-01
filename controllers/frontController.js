@@ -6,8 +6,14 @@ const { initializePayment, verifyPayment } = require('../config/paystack')(reque
 const Order = require('../models/orders')
 
 
-exports.indexPage = (req, res, next) => {
-    res.render('frontend/index', { title: 'Phash :: Home', });
+exports.indexPage = async (req, res, next) => {
+    await Products.find({}).then((result) => {
+        // console.log(result)
+        if (result) {
+            res.render('frontend/index', { title: 'Phash :: Shop', result });
+        }
+        res.render('frontend/index', { title: 'Phash :: Shop',  result: {} });
+    })
 };
 
 exports.shopPage = async (req, res, next) => {
@@ -18,10 +24,22 @@ exports.shopPage = async (req, res, next) => {
         if (result) {
             res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
         }
-        res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
+        res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result: {} });
     })
 
 };
+
+exports.shopPageTag = async (req, res, next) => {
+    let pageName = 'shop';
+
+    await Products.find({ 'productCollection': req.params.tag }).then((result) => {
+        if (result) {
+            res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
+        }
+        res.render('frontend/shop', { title: 'Phash :: shop', pageName, })
+
+    })
+}
 
 exports.contactPage = (req, res, next) => {
     let pageName = 'contact';
@@ -236,7 +254,7 @@ exports.paystackPay = (req, res, next) => {
     initializePayment(form, (error, body) => {
         if (error) {
             console.log(error)
-            return res.render('/frontend/error')
+            return res.render('frontend/paymenterror')
         }
         response = JSON.parse(body);
         console.log(body)
@@ -244,12 +262,12 @@ exports.paystackPay = (req, res, next) => {
     });
 }
 
-exports.paystackCallback =  (req, res, next) => {
+exports.paystackCallback = (req, res, next) => {
     const ref = req.query.reference
-    verifyPayment(ref,  async (error, body) => {
+    verifyPayment(ref, async (error, body) => {
         if (error) {
             console.log(error)
-            return res.redirect('/frontend/error');
+            return res.redirect('frontend/paymenterror');
         }
         response = JSON.parse(body);
         console.log(response)
@@ -264,7 +282,7 @@ exports.paystackCallback =  (req, res, next) => {
 
         console.log(newOrder)
 
-      await Order.create(newOrder).then(result => {
+        await Order.create(newOrder).then(result => {
             if (!result) {
                 console.log('there was an error')
                 res.redirect('/checkout')
