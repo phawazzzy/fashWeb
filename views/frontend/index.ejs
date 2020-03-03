@@ -69,31 +69,31 @@
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-               
-                    <div class="col-lg-4">
-                        <div class="single-banner">
-                            <img src="img/pic1.jpg" alt="image">
-                            <div class="inner-text">
-                                <h4>Men’s</h4>
-                            </div>
+
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic1.jpg" alt="image">
+                        <div class="inner-text">
+                            <h4>Men’s</h4>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="single-banner">
-                            <img src="img/pic5.jpeg" alt="clothe image">
-                            <div class="inner-text">
-                                <h4>Women’s</h4>
-                            </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic5.jpeg" alt="clothe image">
+                        <div class="inner-text">
+                            <h4>Women’s</h4>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="single-banner">
-                            <img src="img/pic6.jpeg" alt="model image">
-                            <div class="inner-text">
-                                <h4>Kid’s</h4>
-                            </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/pic6.jpeg" alt="model image">
+                        <div class="inner-text">
+                            <h4>Kid’s</h4>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -106,7 +106,7 @@
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/pic1.jpg">
                         <h2>Women’s</h2>
-                        <a href="/shop/woman">Discover More</a>
+                        <a href="/shop/women">Discover More</a>
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-1">
@@ -114,40 +114,18 @@
                         <ul>
                             <li class="active">Women Clothings</li>
                             <!-- <li>HandBag</li>
-                        <li>Shoes</li>
-                        <li>Accessories</li> -->
+                            <li>Shoes</li>
+                            <li>Accessories</li> -->
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
-                    <% for (var i = 0; i < result2.length; i++ ) { %>
-                        
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="<%= result2[i].productImage1 %>" alt="<%= result2[i].productName %>">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="/products/<%= result2[i]._id %> ">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name"><%= result2[i].category %></div>
-                                <a href="/products/<%= result2[i]._id %>">
-                                    <%= result2[i].productName %>
-                                </a>
-                                <div class="product-price">
-                                    <%= result2[i].productPrice %>
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
+                        <% for (var i = 0; i < result2.length; i++ ) { %>
+
+                        <%- include('../component/productCard.ejs', {data: result2[i]}) %>
+
                         <% } %>
-                   
-                    <!-- <div class="product-item">
+
+                        <!-- <div class="product-item">
                         <div class="pi-pic">
                             <img src="img/kaliLInux.png" alt="">
                             <div class="icon">
@@ -213,17 +191,17 @@
                             </div>
                         </div>
                     </div> -->
+                    </div>
+
+
                 </div>
-
-
             </div>
         </div>
-    </div>
-</section>
-<!-- Women Banner Section End -->
+    </section>
+    <!-- Women Banner Section End -->
 
-<!-- Deal Of The Week Section Begin-->
-<!-- <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+    <!-- Deal Of The Week Section Begin-->
+    <!-- <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
     <div class="container">
         <div class="col-lg-6 text-center">
             <div class="section-title">
@@ -257,50 +235,27 @@
         </div>
     </div>
 </section> -->
-<!-- Deal Of The Week Section End -->
+    <!-- Deal Of The Week Section End -->
 
- <!-- Man Banner Section Begin -->
- <section class="man-banner spad">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="filter-control">
-                    <ul>
-                        <li class="active">Men Clothings</li>
-                        <!-- <li>HandBag</li>
-                        <li>Shoes</li>
-                        <li>Accessories</li> -->
-                    </ul>
-                </div>
-                <div class="product-slider owl-carousel">
-                    <% for (var i = 0; i < result.length; i++ ) { %>
+    <!-- Man Banner Section Begin -->
+    <section class="man-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="filter-control">
+                        <ul>
+                            <li class="active">Men Clothings</li>
+                            <!-- <li>HandBag</li>
+                            <li>Shoes</li>
+                            <li>Accessories</li> -->
+                        </ul>
+                    </div>
+                    <div class="product-slider owl-carousel">
+                        <% for (var i = 0; i < result.length; i++ ) { %>
 
-                    
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="<%= result[i].productImage1 %>" alt="<%= result[i].productName %>">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <!-- <i class="icon_heart_alt"></i> -->
-                                    <span> <%= result[i].size%> </span>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href='/products/<%=result[i]._id%>'>+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name"><%= result[i].category %></div>
-                                <a href="#">
-                                    <h5> <%= result[i].productName%> </h5>
-                                </a>
-                                <div class="product-price">
-                                    #<%= result[i].productPrice%>
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
+
+                        <%- include('../component/productCard.ejs', {data: result[i]}) %>
+
                         <% } %>
                     </div>
                 </div>
@@ -312,9 +267,45 @@
                 </div>
             </div>
         </div>
- </section>
+    </section>
 
     <!-- Man Banner Section End -->
+
+
+    <!-- KIDS Banner Section Begin -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="img/pic1.jpg">
+                        <h2>Women’s</h2>
+                        <a href="/shop/kids">Discover More</a>
+                    </div>
+                </div>
+                <div class="col-lg-8 offset-lg-1">
+                    <div class="filter-control">
+                        <ul>
+                            <li class="active">Kids Clothings</li>
+                            <!-- <li>HandBag</li>
+                        <li>Shoes</li>
+                        <li>Accessories</li> -->
+                        </ul>
+                    </div>
+                    <div class="product-slider owl-carousel">
+                        <% for (var i = 0; i < result2.length; i++ ) { %>
+                        <%- include('../component/productCard.ejs', {data: result2[i]}) %>
+
+                        <% } %>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Women Banner Section End -->
 
     <section class="latest-blog spad">
         <div class="container">
@@ -365,6 +356,3 @@
 </body>
 
 </html>
-
-
-
