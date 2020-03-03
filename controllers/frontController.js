@@ -8,28 +8,25 @@ const Order = require('../models/orders')
 exports.indexPage = async (req, res, next) => {
   let result2 = await Products.find({ 'category': 'women' });
   let result = await Products.find({ 'category': 'men' });
+  let result3 = await Products.find({ 'category': 'kids' });
+
 //   console.log(women)
-    res.render('frontend/index', { title: 'phash', result: result, result2: result2 })
+    res.render('frontend/index', { title: 'phash', result, result2, result3 })
 
 }
 
 exports.shopPage = async (req, res, next) => {
     let pageName = 'Shop';
 
-    await Products.find({}).then((result) => {
-        // console.log(result)
-        if (result) {
-            res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
-        }
-        res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result: {} });
-    })
+    let result = await Products.find({})
+    res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
 
 };
 
 exports.shopPageTag = async (req, res, next) => {
     let pageName = 'shop';
 
-    await Products.find({ 'productCollection': req.params.tag }).then((result) => {
+    await Products.find({ 'category': req.params.tag }).then((result) => {
         if (result) {
             res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
         }
