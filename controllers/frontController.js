@@ -298,8 +298,9 @@ exports.cleanCart = (req, res, next) => {
 }
 
 exports.loginPage = (req, res, next) => {
+    let passwordError = req.flash('passwordError');
 
-    res.render('frontend/login', { title: 'Phash :: login', });
+    res.render('frontend/login', { title: 'Phash :: login', passwordError });
 };
 
 exports.registerPage = (req, res, next) => {
