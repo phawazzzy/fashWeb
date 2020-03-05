@@ -7,7 +7,7 @@ const userSchema = new Schema({
     lastName: { type: String },
     email: { type: String, unique: true, required: true, trim: true },
     password: { type: String },
-    phoneNum: {type: String},
+    phoneNum: { type: String },
     registeredDate: { type: Date, default: Date.now }
 });
 
@@ -17,7 +17,7 @@ userSchema.methods.hashPassword = (password) => {
 };
 
 userSchema.methods.validatePassword = (password, userPassword) => {
-    console.log(userPassword, password)
+    // console.log(userPassword, password)
     return bcrypt.compareSync(password, userPassword);
 };
 

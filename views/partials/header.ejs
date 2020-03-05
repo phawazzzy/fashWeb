@@ -62,7 +62,9 @@
                         <li class="cart-icon">
                             <a href="/cart">
                                 <i class="icon_bag_alt"></i>
-                                <span> <%- session.sumOfQuantity ? session.sumOfQuantity : 0 %></span>
+                                <% if (session.sumOfQuantity) { %>
+                                <span> <%- session.sumOfQuantity %> </span>
+                                <% } %>
                             </a>
                             <!-- <div class="cart-hover">
                                 <div class="select-items">
@@ -105,7 +107,9 @@
                                 </div>
                             </div> -->
                         </li>
-                        <li class="cart-price"> #<%- session.totalPrice ? session.totalPrice : 0 %> </li>
+                        <li class="cart-price">
+                            ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : '' %>
+                        </li>
                     </ul>
                 </div>
             </div>
