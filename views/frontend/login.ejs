@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs', {}) %>
+<%- include('../partials/head.ejs', {}) %>
+
 <body>
     <%- include('../partials/loader.ejs', {}) %>
 
     <%- include('../partials/header.ejs', {}) %>
 
 
-     <!-- Register Section Begin -->
-     <div class="register-login-section spad">
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
@@ -48,15 +49,23 @@
     <%- include('../partials/footer.ejs', {}) %>
     <%- include('../partials/script.ejs', {}) %>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-       if('<%- passwordError %>' ){
-          swal({
-            icon: "error",
-				text: "<%=passwordError%>"
-          })
-       }
-       
-    </script> 
+   <script>
+        if ('<%- passwordError %>') {
+            swal({
+                icon: "error",
+                text: "<%=passwordError%>"
+            })
+        }
+
+        if ('<%- LoginError %>') {
+            swal({
+                icon: 'error',
+                text: '<%= LoginError %>'
+            })
+        }
+
+    </script>
 
 </body>
+
 </html>

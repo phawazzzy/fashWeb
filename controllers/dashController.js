@@ -26,6 +26,7 @@ exports.newProduct = async (req, res, next) => {
   };
 
   if (req.files) {
+    console.log('i am hee')
     try {
       const uploader = async (path) => await cloudinary.uploads(path, 'Phash');
       const urls = [];
@@ -64,4 +65,8 @@ exports.newProduct = async (req, res, next) => {
 }
 exports.loginAdmin = (req, res, next) => {
   res.render('backend/login', { title: 'Login' })
+}
+
+exports.orders = (req, res, next) => {
+  res.render('backend/orders', {title: 'ORDERS'})
 }

@@ -61,6 +61,7 @@ passport.use('local.login', new localStrategy({
 
         }
         if (!user) {
+            req.flash('LoginError', 'sorry! didnt work, please try again')
             return done(null, false);
         }
 

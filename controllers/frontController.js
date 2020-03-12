@@ -299,13 +299,12 @@ exports.cleanCart = (req, res, next) => {
 
 exports.loginPage = (req, res, next) => {
     let passwordError = req.flash('passwordError');
+    let LoginError = req.flash('LoginError');
 
-    res.render('frontend/login', { title: 'Phash :: login', passwordError });
+    res.render('frontend/login', { title: 'Phash :: login', passwordError, LoginError });
 };
 
 exports.registerPage = (req, res, next) => {
-
-
     let message = req.flash('userExist');
     res.render('frontend/register', { title: 'Phash :: register', message, });
 };
