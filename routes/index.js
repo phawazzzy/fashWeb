@@ -9,6 +9,7 @@ const { dashboard,
     dashProduct,
     newProduct,
     orders,
+    productList
 } = require('../controllers/dashController');
 
 
@@ -58,6 +59,7 @@ router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
 router.get('/dashboard/orders', orders)
+router.get('/dashboard/products', productList)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)

@@ -15,6 +15,8 @@ exports.dashProduct = (req, res, next) => {
   let failure = req.flash('Failure')
   res.render('backend/products', { title: 'Add new products', failure, success, ImageError })
 }
+
+
 exports.newProduct = async (req, res, next) => {
   let productDetails = {
     productName: req.body.productName,
@@ -63,10 +65,25 @@ exports.newProduct = async (req, res, next) => {
 
   res.redirect('/dashboard/product')
 }
+
+exports.productList = (req, res, next) => {
+  res.render('backend/productList', {title: 'product LIst'})
+}
 exports.loginAdmin = (req, res, next) => {
   res.render('backend/login', { title: 'Login' })
 }
 
 exports.orders = (req, res, next) => {
+    Order.find().then(results => {
+      let mapped = results.map(doc=> {
+        return {
+          orderDetails: doc.orderDetails.products,
+          qauntity: doc.orderDetails.qty
+        }
+      })
+      console.log(mapped)
+      console.log(results)
+
+    })
   res.render('backend/orders', {title: 'ORDERS'})
 }
