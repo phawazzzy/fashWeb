@@ -35,7 +35,10 @@
                     <div class="col-sm-10 ml-md-auto pl-0">
 
                         <%- include('./fields/button.ejs', {fieldvalue: 'CREATE PRODUCT', fieldname: 'submit'}) %>
+                        <a href="/dashboard/products" class="btn btn-success pull-right"><i class="fa fa-caret-left pr-2"> </i>Back to List</a>
+
                     </div>
+
                 </form>
             </div>
             <!-- <end of content> -->
@@ -46,6 +49,10 @@
             <!-- /footer -->
         </div>
     </div>
+    <%- include('./partials/footer.ejs', {}) %>
+
+
+
     <script>
         const productForm = document.getElementById('productadd');
         const productPriceField = document.getElementById('productPrice');

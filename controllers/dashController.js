@@ -5,17 +5,18 @@ const Order = require('../models/orders')
 const Products = require('../models/products')
 
 exports.dashboard = async (req, res, next) => {
- let result = await Order.find({})
- let result2 = await Products.find({})
-  res.render('backend/dashboard', { title: 'Dashboard', result, result2 })
+  let pagename = 'dashboard'
+  let result = await Order.find({})
+  let result2 = await Products.find({})
+  res.render('backend/dashboard', { title: 'Dashboard', result, result2, pagename })
 }
 exports.dashProduct = (req, res, next) => {
+  let pagename = 'product'
   let ImageError = req.flash('imageError')
   let success = req.flash('success')
   let failure = req.flash('Failure')
-  res.render('backend/products', { title: 'Add new products', failure, success, ImageError })
+  res.render('backend/products', { title: 'Add new products', pagename, failure, success, ImageError })
 }
-
 
 exports.newProduct = async (req, res, next) => {
   let productDetails = {
@@ -66,24 +67,42 @@ exports.newProduct = async (req, res, next) => {
   res.redirect('/dashboard/product')
 }
 
-exports.productList = (req, res, next) => {
-  res.render('backend/productList', {title: 'product LIst'})
+exports.productList = async (req, res, next) => {
+  let pagename = 'product'
+  let result = await Products.find({}).then(result => {
+    if (result) {
+      // console.log(result)
+      return result
+    }
+    else {
+      return `we couldnt fetch the content from the DB`
+      // throw new Error
+    }
+  })
+  console.log('result', result)
+  res.render('backend/productList', { title: 'product LIst', result, pagename })
 }
 exports.loginAdmin = (req, res, next) => {
   res.render('backend/login', { title: 'Login' })
 }
 
 exports.orders = (req, res, next) => {
-    Order.find().then(results => {
-      let mapped = results.map(doc=> {
-        return {
-          orderDetails: doc.orderDetails.products,
-          qauntity: doc.orderDetails.qty
-        }
-      })
-      console.log(mapped)
-      console.log(results)
+  let pagename = 'orders'
+  Order.find({}).then(results => {
+    let mapped = results.map(doc => {
+      return {
+        orderDetails: doc.orderDetails.products[0],
+        quantity: doc.orderDetails.qty[0].qty,
+        firstname: doc.orderDetails.firstname,
+        lastname: doc.orderDetails.lastname,
+        customerEmail: doc.orderDetails.email,
+        address: `${doc.orderDetails.country} ${doc.orderDetails.street1} ${doc.orderDetails.town}`
 
+      }
     })
-  res.render('backend/orders', {title: 'ORDERS'})
+    console.log(mapped)
+    // console.log(results)
+
+  })
+  res.render('backend/orders', { title: 'ORDERS', pagename })
 }
