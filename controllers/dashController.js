@@ -86,23 +86,47 @@ exports.loginAdmin = (req, res, next) => {
   res.render('backend/login', { title: 'Login' })
 }
 
-exports.orders = (req, res, next) => {
+exports.orders = async (req, res, next) => {
   let pagename = 'orders'
-  Order.find({}).then(results => {
+  let orders = await Order.find({}).then(results => {
     let mapped = results.map(doc => {
+      let newArray = [];
+      let quantity = doc.orderDetails.qty.forEach(doc => {
+       newArray.push(doc.qty)
+      })
       return {
-        orderDetails: doc.orderDetails.products[0],
-        quantity: doc.orderDetails.qty[0].qty,
+        orderDetails: doc.orderDetails.products,
+        quantity: newArray,
         firstname: doc.orderDetails.firstname,
         lastname: doc.orderDetails.lastname,
         customerEmail: doc.orderDetails.email,
         address: `${doc.orderDetails.country} ${doc.orderDetails.street1} ${doc.orderDetails.town}`
-
       }
-    })
-    console.log(mapped)
-    // console.log(results)
 
+      
+
+    })
+    console.log(mapped.orderDetails)
+    return mapped
+  }).catch(err => {
+    console.log(err)
   })
+  // console.log(orders)
+
+  try {
+    let concated = []
+    for (i = 0; i < orders.length; ++i) {
+      let array1 = orders[i].orderDetails
+      let array2 = orders[i].quantity
+      let obj = {}
+      let key = array1[i]
+      let value = array2[i]
+      obj[key] = value
+      concated.push(obj)
+      }
+      console.log(concated)
+  } catch (error) {
+    console.log(error)
+  }
   res.render('backend/orders', { title: 'ORDERS', pagename })
 }
