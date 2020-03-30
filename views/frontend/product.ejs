@@ -7,15 +7,14 @@
   <!-- header -->
   <%- include('../partials/header.ejs', {}) %>
 
-  <%- include('../partials/breadCrumbs.ejs', { pageName, subpageName }) %>
+  <%#- include('../partials/breadCrumbs.ejs', { pageName, subpageName }) %>
 
 
    <!-- Product Shop Section Begin -->
    <section class="product-shop spad page-details">
     <div class="container">
         <div class="row">
-           
-            <!-- <div class="col-lg-3">
+             <div class="col-lg-3">
                 <div class="filter-widget">
                     <h4 class="fw-title">Categories</h4>
                     <ul class="filter-catagories">
@@ -137,9 +136,9 @@
                         <a href="#">Backpack</a>
                     </div>
                 </div>
-            </div> -->
+            </div> 
             <!-- side bar -->
-            <%- include('../partials/sidebarFilter.ejs', {}) %>
+            <%#- include('../partials/sidebarFilter.ejs', {}) %>
             <!-- side bar -->
             <!-- main -->
 
@@ -184,7 +183,7 @@
                             </div>
                             <div class="pd-desc">
                                 <p> <%= result.productDescription  %> </p>
-                                <h4> #<%= result.productPrice %> <span> <%= result.discountedPrice? result.discountedPrice : '' %><span></h4>
+                                <h4> ₦ <%= (result.productPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %> <span> <%= result.discountedPrice? result.discountedPrice : '' %><span></h4>
                             </div>
                             <div class="pd-color">
                                 <h6>Color</h6>

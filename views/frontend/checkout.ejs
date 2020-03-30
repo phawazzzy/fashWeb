@@ -89,10 +89,10 @@
                             
 
                             
-                            <li name="product" class="fw-normal"><%= cart[i].productName %>  x <%= priceDetails[i].qty %> <span> NGN <%= priceDetails[i].total %></span></li>
+                            <li name="product" class="fw-normal"><%= cart[i].productName %>  x <%= priceDetails[i].qty %> <span>  ₦ <%= (priceDetails[i].total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %></span></li>
                             
                                 <% } %>
-                                <li class="total-price" name="amount"  >Total <span>NGN <%= session.totalPrice ? session.totalPrice : 0 %></span></li>
+                                <li class="total-price" name="amount"  >Total <span> ₦ <%= session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : 0 %></span></li>
 
                         </ul>
                         <!-- <div class="payment-check">

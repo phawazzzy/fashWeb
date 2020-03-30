@@ -8,6 +8,8 @@ const isloggedin = require('../middlewares/isloggedin')
 const { dashboard,
     dashProduct,
     newProduct,
+    orders,
+    productList
 } = require('../controllers/dashController');
 
 
@@ -41,7 +43,7 @@ router.get('/shop/:tag', shopPageTag)
 
 router.get('/cleanCart', cleanCart);
 router.post('/register/members', passport.authenticate('local.register', {
-    successRedirect: '/',
+    successRedirect: '/login',
     failureRedirect: '/register',
     failureFlash: true
 }));
@@ -56,6 +58,8 @@ router.post('/login/members', passport.authenticate('local.login', {
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
+router.get('/dashboard/orders', orders)
+router.get('/dashboard/products', productList)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs', {title}) %>
+
+<body>
+  <div class="wrapper">
+    <%- include('./partials/sidebar.ejs', {}) %>
+
+    <div class="main-panel">
+      <%- include('./partials/navbar.ejs', {}) %>
+      <div class="content">
+        <div class="col card-deck mt-3 pl-2">
+
+        <% for(var i = 0; i < orders.length; i++) { %>
+
+
+        <div class="card col-sm-4 col-xs-12 px-2" >
+          <img class="card-img-top"
+            src="http://res.cloudinary.com/phashsupping/image/upload/v1584556581/Phash/sjuugzvcriwazoiltgvi.png"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Product Name</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Customer: <%= orders[i].firstname +" "+orders[i].lastname %> </li>
+            <li class="list-group-item">Customer mail: <%= orders[i].customerEmail %> </li>
+            <li class="list-group-item">C.number: 08162816543</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">VIEW MORE</a>
+            <a href="#" class="card-link">Order status</a>
+          </div>
+        </div>
+
+        <% } %>
+      </div>
+
+      <%- include('./partials/footer.ejs', {}) %>
+
+    </div>
+    </div>
+  </div>
+  <%- include('./partials/script.ejs', {}) %>
+
+</body>
+
+
+</html>

@@ -12,6 +12,7 @@ const productSchema = new Schema({
     publicid3: { type: String },
     productDescription: { type: String },
     productPrice: { type: Number },
+    discountedPrice: { type: Number },
     size: { type: String },
     category: { type: String },
     productCollection: { type: String },

@@ -34,7 +34,6 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>Register</h2>
-                        <%- message ? message : '' %>
                         <form action="/register/members" method="POST">
                             <div class="group-input">
                                 <label for="firstname">Firstname *</label>
@@ -109,8 +108,19 @@
                submitButton.disabled = true
            }
        })
+   
    </script>
     <%- include('../partials/script.ejs', {}) %>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        if('<%-message%>'){
+            swal({
+                icon: 'error',
+                text: '<%= message%>'
+            })
+        }
+    </script>
 </body>
 
 </html>

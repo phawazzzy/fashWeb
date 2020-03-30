@@ -61,10 +61,12 @@ passport.use('local.login', new localStrategy({
 
         }
         if (!user) {
+            req.flash('LoginError', 'sorry! didnt work, please try again')
             return done(null, false);
         }
 
         if (!user.validatePassword(req.body.password, user.password)) {
+            req.flash('passwordError', 'your password is incorrect')
             console.log(req.body.password)
             return done(null, false)
         }

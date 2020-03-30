@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('../partials/head.ejs', {title: 'Error page'}) %>
+
 <body>
+    <%- include('../partials/header.ejs', {}) %>
+
     <h1>
-        AN error occured with the payment ..please check your internet connection or <button id='btnRefresh'>  reload </button> the page 
+        AN error occured with the payment ..please check your internet connection or <button id='btnRefresh'> reload
+        </button> the page
     </h1>
 </body>
 
 <script>
-    let  btnRefresh = document.querySelector('#btnRefresh');
+    let btnRefresh = document.querySelector('#btnRefresh');
 
-    function refreshpage(){
+    function refreshpage() {
         window.location.reload()
     }
-        btnRefresh.addEventListener('click', ()=> {
+    btnRefresh.addEventListener('click', () => {
         refreshpage()
-        })
+    })
 </script>
+<%- include('../partials/footer.ejs', {}) %>
+
 </html>

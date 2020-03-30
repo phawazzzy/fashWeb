@@ -6,12 +6,13 @@ const { initializePayment, verifyPayment } = require('../config/paystack')(reque
 const Order = require('../models/orders')
 
 exports.indexPage = async (req, res, next) => {
-  let result2 = await Products.find({ 'category': 'women' });
-  let result = await Products.find({ 'category': 'men' });
-  let result3 = await Products.find({ 'category': 'kids' });
+    let pageName = 'Home'
+    let result2 = await Products.find({ 'category': 'women' });
+    let result = await Products.find({ 'category': 'men' });
+    let result3 = await Products.find({ 'category': 'kids' });
 
-//   console.log(women)
-    res.render('frontend/index', { title: 'phash', result, result2, result3 })
+    //   console.log(women)
+    res.render('frontend/index', { title: 'phash', result, result2, result3, pageName })
 
 }
 
@@ -26,13 +27,9 @@ exports.shopPage = async (req, res, next) => {
 exports.shopPageTag = async (req, res, next) => {
     let pageName = 'shop';
 
-    await Products.find({ 'category': req.params.tag }).then((result) => {
-        if (result) {
-            res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
-        }
-        res.render('frontend/shop', { title: 'Phash :: shop', pageName, })
+    let result = await Products.find({ 'category': req.params.tag })
+    res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
 
-    })
 }
 
 exports.contactPage = (req, res, next) => {
@@ -298,13 +295,13 @@ exports.cleanCart = (req, res, next) => {
 }
 
 exports.loginPage = (req, res, next) => {
+    let passwordError = req.flash('passwordError');
+    let LoginError = req.flash('LoginError');
 
-    res.render('frontend/login', { title: 'Phash :: login', });
+    res.render('frontend/login', { title: 'Phash :: login', passwordError, LoginError });
 };
 
 exports.registerPage = (req, res, next) => {
-
-
     let message = req.flash('userExist');
     res.render('frontend/register', { title: 'Phash :: register', message, });
 };
