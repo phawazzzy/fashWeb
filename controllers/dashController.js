@@ -89,24 +89,22 @@ exports.loginAdmin = (req, res, next) => {
 exports.orders = async (req, res, next) => {
   let pagename = 'orders'
   let orders = await Order.find({}).then(results => {
+    console.log(results)
     let mapped = results.map(doc => {
       let newArray = [];
       let quantity = doc.orderDetails.qty.forEach(doc => {
        newArray.push(doc.qty)
       })
       return {
-        orderDetails: doc.orderDetails.products,
+        productId: doc.orderDetails.products,
         quantity: newArray,
         firstname: doc.orderDetails.firstname,
         lastname: doc.orderDetails.lastname,
         customerEmail: doc.orderDetails.email,
         address: `${doc.orderDetails.country} ${doc.orderDetails.street1} ${doc.orderDetails.town}`
       }
-
-      
-
     })
-    console.log(mapped.orderDetails)
+    console.log("mapped", mapped)
     return mapped
   }).catch(err => {
     console.log(err)
@@ -128,5 +126,5 @@ exports.orders = async (req, res, next) => {
   } catch (error) {
     console.log(error)
   }
-  res.render('backend/orders', { title: 'ORDERS', pagename })
+  res.render('backend/orders', { title: 'ORDERS', pagename, orders })
 }

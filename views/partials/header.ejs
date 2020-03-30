@@ -115,6 +115,9 @@
             </div>
         </div>
     </div>
+
+
+    <!-- navbar -->
     <div class="nav-item">
         <div class="container">
             <div class="nav-depart">
@@ -122,30 +125,36 @@
                     <i class="ti-menu"></i>
                     <span>All departments</span>
                     <ul class="depart-hover">
-                        <li class="active"><a href="#">Women’s Clothing</a></li>
-                        <li><a href="#">Men’s Clothing</a></li>
-                        <li><a href="#">Underwear</a></li>
-                        <li><a href="#">Kid's Clothing</a></li>
-                        <li><a href="#">Brand Fashion</a></li>
-                        <li><a href="#">Accessories/Shoes</a></li>
-                        <li><a href="#">Luxury Brands</a></li>
-                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                        <li class="active"><a href="#">Male Clothings</a></li>
+                        <li><a href="#">female Clothings</a></li>
+                        <li><a href="#">male kid</a></li>
+                        <li><a href="#"> female kid </a></li>
+                        <li><a href="#"> male shoes </a></li>
+                        <li><a href="#"> female shoes </a></li>
+                        <li><a href="#">  male caps</a></li>
+                        <li><a href="#"> female caps</a></li>
                     </ul>
                 </div>
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/shop">Shop</a></li>
-                    <li><a href="#">Collection</a>
+                    <li class= <%= (pageName == 'Home') ? 'active' : '' %> >
+                        <a href="/">Home</a> 
+                    </li>
+                    <li class=<%= (pageName == 'Shop') ? 'active' : '' %>  >
+                        <a href="/shop">Shop</a>
+                    </li>
+                    <li class=<%= (pageName == 'shop') ? 'active' : '' %> ><a href="#">Collection</a>
                         <ul class="dropdown">
-                            <li><a href="/shop/men">Men's</a></li>
+                            <li class=<%= (pageName == 'shop') ? 'active' : '' %>><a href="/shop/men">Men's</a></li>
                             <li><a href="/shop/women">Women's</a></li>
                             <li><a href="/shop/kids">Kid's</a></li>
                         </ul>
                     </li>
                     <!-- <li><a href="#">Blog</a></li> -->
-                    <li><a href="/contact">Contact</a></li>
+                    <li class=<%= (pageName == 'contact') ? 'active' : '' %> >
+                        <a href="/contact">Contact</a>
+                    </li>
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
                             <!-- <li><a href="./blog-details.html">Blog Details</a></li> -->
@@ -162,5 +171,7 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </div>
+
+    <!-- navbar -->
 </header>
 <!-- Header End -->
