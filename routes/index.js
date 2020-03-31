@@ -9,7 +9,10 @@ const { dashboard,
     dashProduct,
     newProduct,
     orders,
-    productList
+    productList,
+    sliderAdd,
+    sliderpost,
+    sliderList
 } = require('../controllers/dashController');
 
 
@@ -60,6 +63,11 @@ router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
 router.get('/dashboard/orders', orders)
 router.get('/dashboard/products', productList)
+router.get('/dashboard/sliders', sliderList)
+router.route('/dashboard/slider/add')
+.all()
+.get(sliderAdd)
+.post(upload.single('sliderImage'), sliderpost)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)
