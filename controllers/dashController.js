@@ -3,6 +3,7 @@ const cloudinary = require('../config/cloudinary')
 const fs = require('fs');
 const Order = require('../models/orders')
 const Products = require('../models/products')
+const Slider = require('../models/slider')
 
 exports.dashboard = async (req, res, next) => {
   let pagename = 'dashboard'
@@ -93,7 +94,7 @@ exports.orders = async (req, res, next) => {
     let mapped = results.map(doc => {
       let newArray = [];
       let quantity = doc.orderDetails.qty.forEach(doc => {
-       newArray.push(doc.qty)
+        newArray.push(doc.qty)
       })
       return {
         productId: doc.orderDetails.products,
@@ -121,10 +122,66 @@ exports.orders = async (req, res, next) => {
       let value = array2[i]
       obj[key] = value
       concated.push(obj)
-      }
-      console.log(concated)
+    }
+    console.log(concated)
   } catch (error) {
     console.log(error)
   }
   res.render('backend/orders', { title: 'ORDERS', pagename, orders })
+}
+
+exports.sliderAdd = async (req, res, next) => {
+  let pagename = 'slider'
+  let success = req.flash('success')
+  let imageError = req.flash('imageError')
+  res.render('backend/slider-add', { pagename, success, imageError });
+}
+
+exports.sliderpost = async (req, res, next) => {
+  let sliderDetails = {
+    sliderName: req.body.sliderName,
+    text_on_slider: req.body.TextOnSlider
+  }
+
+  console.log(sliderDetails)
+  if (req.file) {
+    console.log(req.file)
+    try {
+      var file = req.file
+      const { path } = file;
+      console.log(path)
+      const uploader = await cloudinary.uploads(path, 'Phash');
+      console.log(uploader)
+      fs.unlinkSync(path)
+      sliderDetails.sliderImage = uploader.url
+      sliderDetails.publicid = uploader.id
+      console.log(sliderDetails)
+      await Slider.create(sliderDetails).then(result => {
+        if (result) {
+          console.log(result)
+          req.flash('success', 'Upload Succesfully done')
+        }
+      })
+    } catch (error) {
+      console.log(error)
+      req.flash('ImageError', `An error ${error} occured during the image upload`)
+    }
+  }
+  res.redirect('/dashboard/slider/add')
+}
+
+exports.sliderList = async (req, res, next) => {
+  let pagename = 'slider'
+  let result = await Slider.find({}).then(result => {
+    if (result) {
+      // console.log(result)
+      return result
+    }
+    else {
+      return `we couldnt fetch the content from the DB`
+      // throw new Error
+    }
+  })
+  console.log('result', result)
+  res.render('backend/slider', { title: 'Slider List', result, pagename })
 }

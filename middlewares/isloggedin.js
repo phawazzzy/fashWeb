@@ -1,10 +1,12 @@
 
 
 module.exports = function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated()) 
         return next()
-    } else{
     req.flash("PleaseLogin", "Please login to continue")
+    req.session.fromUrl = req.originalUrl
+    console.log(req.session.fromUrl)
     res.redirect("/login");
-    }
+
+
 }

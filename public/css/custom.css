@@ -2,11 +2,11 @@
     border-color: black;
 } */
 .form-control:invalid {
-    border-color: red;
+    border-color: #eaa0a0;
 }
 
 #email:invalid {
-    border-color: red;
+    border-color: #eaa0a0;
 }
 
 .passnotmatch {

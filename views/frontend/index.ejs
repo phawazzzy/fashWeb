@@ -13,14 +13,14 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/large.jpg">
+            <% for(var i =0; i < slider.length; ++i) { %>
+            <div class="single-hero-items set-bg" data-setbg=" <%= slider[i].sliderImage %> ">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>stylish clothes</span>
+                            <span> <%= slider[i].sliderName %></span>
                             <h1>Phash Supping</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <p> <%= slider[i].text_on_slider %></p>
                             <a href="/shop" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -29,8 +29,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="single-hero-items set-bg" data-setbg="img/images.jpeg">
+            <% } %>
+            <!-- <div class="single-hero-items set-bg" data-setbg="img/images.jpeg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -45,9 +45,9 @@
                         <h2>Order<span>now</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="single-hero-items set-bg" data-setbg="img/large.jpg">
+            <!-- <div class="single-hero-items set-bg" data-setbg="img/large.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -62,7 +62,7 @@
                         <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- Hero Section End -->

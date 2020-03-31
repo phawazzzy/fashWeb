@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head.ejs', {}) %>
+<%- include('../partials/head.ejs', {title: 'Login'}) %>
 
 <body>
     <%- include('../partials/loader.ejs', {}) %>
 
-    <%- include('../partials/header.ejs', {}) %>
+    <%- include('../partials/header.ejs', {pageName: 'Login'}) %>
 
 
     <!-- Register Section Begin -->
@@ -50,6 +50,7 @@
     <%- include('../partials/script.ejs', {}) %>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script>
+       let password = 'wrng password'
         if ('<%- passwordError %>') {
             swal({
                 icon: "error",

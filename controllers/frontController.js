@@ -4,15 +4,17 @@ const _ = require('lodash');
 const request = require('request');
 const { initializePayment, verifyPayment } = require('../config/paystack')(request)
 const Order = require('../models/orders')
+const Slider = require('../models/slider')
 
 exports.indexPage = async (req, res, next) => {
     let pageName = 'Home'
     let result2 = await Products.find({ 'category': 'women' });
     let result = await Products.find({ 'category': 'men' });
     let result3 = await Products.find({ 'category': 'kids' });
+    let slider = await Slider.find({})
 
     //   console.log(women)
-    res.render('frontend/index', { title: 'phash', result, result2, result3, pageName })
+    res.render('frontend/index', { title: 'phash', result, result2, result3, slider, pageName })
 
 }
 
@@ -296,7 +298,6 @@ exports.cleanCart = (req, res, next) => {
 
 exports.loginPage = (req, res, next) => {
     let pageName = 'login'
-
     let passwordError = req.flash('passwordError');
     let LoginError = req.flash('LoginError');
 

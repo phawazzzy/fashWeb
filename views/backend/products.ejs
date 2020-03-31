@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3">
                     <h1 class="h2 rw">Edit Page Content: <span class="text-info">New Product</span></h1>
                 </div>
-                <form action="/post/dashboard/product" method="post" enctype="multipart/form-data" id="productadd">
+                <form action="/post/dashboard/product" method="post" enctype="multipart/form-data" id="productadd" class="col-lg-10 col-md-10 col-sm-10 col-xs-10"> 
                     <%#- success ? success : '' %>
 
                     <%- include('./fields/text.ejs', {fieldname: 'productName', fieldlabel: 'Product Name', fieldplaceholder: 'PRODUCT NAME HERE', valueField: ''}) %>
