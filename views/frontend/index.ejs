@@ -3,7 +3,7 @@
 <%- include('../partials/head.ejs', {title}) %>
 
 <body>
-    <%- include('../partials/loader.ejs', {}) %>
+    <%#- include('../partials/loader.ejs', {}) %>
     <!-- header -->
     <%- include('../partials/header.ejs', {}) %>
     <!-- /header -->
@@ -19,8 +19,8 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <span> <%= slider[i].sliderName %></span>
-                            <h1>Phash Supping</h1>
-                            <p> <%= slider[i].text_on_slider %></p>
+                            <h1 style="color: rgb(151, 145, 145);">Phash Supping</h1>
+                            <p style="color: rgb(22, 19, 22); font-weight: bolder;"> <%= slider[i].text_on_slider %></p>
                             <a href="/shop" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
 
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img class="lozad" src="img/large.jpg" alt="image">
+                        <img class="lozad" src="img/man.jpeg" alt="image">
                         <div class="inner-text">
                             <a href="/shop/men">
                                 <h4>Men’s</h4>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img class="lozad" src="/img/large.jpg" alt="cloth image">
+                        <img class="lozad" src="/img/woman.jpeg" alt="cloth image">
                         <div class="inner-text">
                             <a href="/shop/women">
                                 <h4>Women’s</h4>
@@ -94,9 +94,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img class="lozad" src="img/large.jpg" alt="model image">
+                        <img class="lozad" src="img/kid.jpeg" alt="model image">
                         <div class="inner-text">
-                            <h4>Kid’s</h4>
+                           <a href="/shop/kids"> <h4>Kid’s</h4> </a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/large.jpg">
+                    <div class="product-large set-bg" data-setbg="img/bigbanner.jpeg">
                         <h2>Women’s</h2>
                         <a href="/shop/women">Discover More</a>
                     </div>
@@ -283,7 +283,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/large.jpg">
+                    <div class="product-large set-bg" data-setbg="img/kids.jpeg">
                         <h2>Kid’s</h2>
                         <a href="/shop/kids">Discover More</a>
                     </div>
@@ -331,7 +331,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img class="loazd" data-src="img/icon-2.png" alt="">
+                                <img class="lozad" data-src="img/icon-2.png" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Delivery On Time</h6>
@@ -342,7 +342,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img class="loazd" data-src="img/icon-1.png" alt="">
+                                <img class="lozad" data-src="img/icon-1.png" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Secure Payment</h6>
