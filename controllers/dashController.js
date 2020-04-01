@@ -5,6 +5,15 @@ const Order = require('../models/orders')
 const Products = require('../models/products')
 const Slider = require('../models/slider')
 
+async function oneImage(file) {
+  const { path } = file;
+  console.log(path)
+  const uploader = await cloudinary.uploads(path, 'Phash');
+  console.log(uploader)
+  fs.unlinkSync(path)
+  return uploader
+}
+
 exports.dashboard = async (req, res, next) => {
   let pagename = 'dashboard'
   let result = await Order.find({})
@@ -170,6 +179,45 @@ exports.sliderpost = async (req, res, next) => {
   res.redirect('/dashboard/slider/add')
 }
 
+exports.sliderEdit = async (req, res, next) => {
+  let pagename = 'slider'
+  let id = req.params.id
+  console.log(req.originalUrl)
+  console.log(id)
+  let result = await Slider.findById(id)
+  console.log(result)
+  res.render('backend/slider-add', { pagename, result, url: req.originalUrl });
+}
+
+exports.editSlider = async (req, res, next) => {
+  let id = req.params.id
+  console.log(id)
+  let sliderDetails = {
+    sliderName: req.body.sliderName,
+    text_on_slider: req.body.TextOnSlider
+  }
+  if (req.file) {
+    var file = req.file
+    const { path } = file;
+    console.log(path)
+    const uploader = await cloudinary.uploads(path, 'Phash');
+    console.log(uploader)
+    fs.unlinkSync(path)
+    sliderDetails.sliderImage = uploader.url
+    sliderDetails.publicid = uploader.id
+  }
+  try {
+    await Slider.findOneAndUpdate({ _id: id }, sliderDetails, { upsert: true });
+    // console.log('res',result)
+    req.flash('success', 'Slider Updated succesfully')
+  } catch (error) {
+    console.log(error)
+    req.flash('ImageError', `An error ${error} occured during the image upload`)
+  }
+
+  res.redirect('/dashboard/sliders')
+}
+
 exports.sliderList = async (req, res, next) => {
   let pagename = 'slider'
   let result = await Slider.find({}).then(result => {
@@ -182,6 +230,64 @@ exports.sliderList = async (req, res, next) => {
       // throw new Error
     }
   })
-  console.log('result', result)
+  // console.log('result', result)
   res.render('backend/slider', { title: 'Slider List', result, pagename })
+}
+
+exports.productEdit = async (req, res, next) => {
+  let pagename = 'product'
+  let ImageError = req.flash('imageError')
+  let success = req.flash('success')
+  let failure = req.flash('Failure')
+  let id = req.params.id
+  let result = await Products.findById(id)
+
+  res.render('backend/products', { title: 'Edit', ImageError, success, failure, pagename, result, url: req.originalUrl })
+}
+
+exports.editProduct = async (req, res, next) => {
+  let id = req.params.id
+  let productDetails = {
+    productName: req.body.productName,
+    productDescription: req.body.productDescription,
+    productPrice: req.body.productPrice,
+    size: req.body.size,
+    category: req.body.category,
+    productCollection: req.body.collection
+  };
+
+  if (req.files) {
+    console.log('i am hee')
+    try {
+      const uploader = async (path) => await cloudinary.uploads(path, 'Phash');
+      const urls = [];
+      const files = req.files;
+      for (const file of files) {
+        const { path } = file;
+        const newPath = await uploader(path)
+        urls.push(newPath)
+        fs.unlinkSync(path)
+      }
+      console.log(urls)
+      productDetails.productImage1 = urls[0].url
+      productDetails.publicid1 = urls[0].id
+      productDetails.productImage2 = urls[1].url
+      productDetails.publicid2 = urls[1].id
+      productDetails.productImage3 = urls[2].url
+      productDetails.publicid3 = urls[2].id
+    } catch (error) {
+      console.log(error)
+      req.flash('ImageError', `An error ${error} occured during the image upload`)
+    }
+  }
+
+  console.log(productDetails);
+  try {
+  await ProductModel.findByIdAndUpdate({_id: id}, productDetails, {upsert: true})
+  req.flash('success', 'Product Updated succesfully')
+  } catch (error) {
+    console.log(error)
+    req.flash('failure', `An error ${error} occured, The upload wasnt succesful`)
+  }
+  res.redirect('/dashboard/products')
 }

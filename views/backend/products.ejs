@@ -14,27 +14,27 @@
             <!-- content -->
             <div class="content">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3">
-                    <h1 class="h2 rw">Edit Page Content: <span class="text-info">New Product</span></h1>
+                    <h1 class="h2 rw"><%= (typeof url != 'undefined') ? 'Edit' : 'Create' %> Page Content: <span class="text-info">Product</span></h1>
                 </div>
-                <form action="/post/dashboard/product" method="post" enctype="multipart/form-data" id="productadd" class="col-lg-10 col-md-10 col-sm-10 col-xs-10"> 
+                <form action="<%= (typeof url != 'undefined') ? url : '/post/dashboard/product' %>" method="post" enctype="multipart/form-data" id="productadd" class="col-lg-10 col-md-10 col-sm-10 col-xs-10"> 
                     <%#- success ? success : '' %>
 
-                    <%- include('./fields/text.ejs', {fieldname: 'productName', fieldlabel: 'Product Name', fieldplaceholder: 'PRODUCT NAME HERE', valueField: ''}) %>
-                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image front view', fieldPlaceholder: 'front view image', valueField: '' }) %>
-                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image back view', fieldPlaceholder: 'back view image', valueField: '' }) %>
-                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image side view', fieldPlaceholder: 'side view image', valueField: '' }) %>
+                    <%- include('./fields/text.ejs', {fieldname: 'productName', fieldlabel: 'Product Name', fieldplaceholder: 'PRODUCT NAME HERE', valueField: (typeof result != 'undefined') ? result.productName : '' }) %>
+                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image front view', fieldPlaceholder: 'front view image', valueField: (typeof result != 'undefined') ? result.productImage1 : '' }) %>
+                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image back view', fieldPlaceholder: 'back view image', valueField: (typeof result != 'undefined') ? result.productImage2 : '' }) %>
+                    <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image side view', fieldPlaceholder: 'side view image', valueField: (typeof result != 'undefined') ? result.productImage3 : '' }) %>
                     <br>
-                    <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product Description', valueField: '' }) %>
-                    <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: '' }) %>
-                    <%- include('./fields/size.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ' }) %>
-                    <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: '' }) %>
-                    <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection',}) %>
+                    <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product Description', valueField: (typeof result != 'undefined') ? result.productDescription : '' }) %>
+                    <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: (typeof result != 'undefined') ? result.productPrice : '' }) %>
+                    <%- include('./fields/size.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ', valueField:  (typeof result != 'undefined') ? result.size : '' }) %>
+                    <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: (typeof result != 'undefined') ? result.category : '' }) %>
+                    <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', valueField : (typeof result != 'undefined') ? result.productCollection : ''}) %>
                     
                     <hr class="my-4"/>
 
                     <div class="col-sm-10 ml-md-auto pl-0">
 
-                        <%- include('./fields/button.ejs', {fieldvalue: 'CREATE PRODUCT', fieldname: 'submit'}) %>
+                        <%- include('./fields/button.ejs', {fieldvalue: (typeof result != 'undefined') ? 'EDIT PRODUCT': 'CREATE PRODUCT', fieldname: 'submit'}) %>
                         <a href="/dashboard/products" class="btn btn-success pull-right"><i class="fa fa-caret-left pr-2"> </i>Back to List</a>
 
                     </div>

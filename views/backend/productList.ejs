@@ -33,7 +33,7 @@
                                         <img src="<%= result[i].productImage1 %>" alt="<%= result[i].productName %>" class="img-fluid p-2">
                                     </div>
                                     <div class="card-footer justify-content-center d-flex">
-                                        <a class="btn btn-primary float-left mr-3" href="">Edit Product</a>
+                                        <a class="btn btn-primary float-left mr-3" href="product/edit/<%=result[i]._id%>">Edit Product</a>
                                         <form action="" method="POST" class="form-inline float-left">
                                             <input type="hidden" name="id" value="">
                                             <input type="submit" class="btn btn-danger delete-item" value="Delete">

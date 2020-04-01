@@ -12,7 +12,12 @@ const { dashboard,
     productList,
     sliderAdd,
     sliderpost,
-    sliderList
+    sliderList,
+    sliderEdit,
+    productEdit,
+    editSlider,
+    editProduct
+
 } = require('../controllers/dashController');
 
 
@@ -65,9 +70,20 @@ router.get('/dashboard/orders', orders)
 router.get('/dashboard/products', productList)
 router.get('/dashboard/sliders', sliderList)
 router.route('/dashboard/slider/add')
-.all()
-.get(sliderAdd)
-.post(upload.single('sliderImage'), sliderpost)
+    .all()
+    .get(sliderAdd)
+    .post(upload.single('sliderImage'), sliderpost)
+
+router.route('/dashboard/slider/edit/:id')
+    .all()
+    .get(sliderEdit)
+    .post(upload.single('sliderImage'), editSlider)
+
+
+router.route('/dashboard/product/edit/:id')
+    .all()
+    .get(productEdit)
+    .post(upload.array('productImage1'), editProduct)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)
