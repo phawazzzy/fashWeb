@@ -24,7 +24,7 @@ async function removeOldImage() {
       console.log(("Removed image at", oldImage.postImage), (" ==> status", result))
 
     });
-  }
+  } ''
 }
 
 
@@ -112,7 +112,6 @@ exports.productList = async (req, res, next) => {
       // throw new Error
     }
   })
-  console.log('result', result)
   res.render('backend/productList', { title: 'product LIst', result, pagename })
 }
 exports.loginAdmin = (req, res, next) => {
@@ -285,22 +284,49 @@ exports.editProduct = async (req, res, next) => {
   };
 
   if (req.files) {
-    try {
-      let picsToDel = [publicid1, publicid2, publicid3]
-      oldImage = await ProductModel.findOne({ _id: id })
-      for (const i=0; i< picsToDel.length; i++) {
-        // removeOldImage(pubid)
+    // console.log(req.files)
+    oldImage = await ProductModel.findOne({ _id: id })
+    if (req.files[0]) {
+      try {
         cloud.v2.uploader.destroy(oldImage.publicid1, function (error, result) {
           if (error) {
             console.log(error)
           }
-          console.log(("Removed image at", oldImage.postImage), (" ==> status", result));
-
+          console.log(("Removed image at", oldImage.productImage1), (" ==> status", result));
         })
+      } catch (error) {
+        console.log('the images couldnt not be deleted')
       }
-    } catch (error) {
-      console.log('the images couldnt not be deleted')
     }
+
+    if (req.files[1]) {
+      try {
+        console.log(oldImage)
+        cloud.v2.uploader.destroy(oldImage.publicid2, function (error, result) {
+          if (error) {
+            console.log(error)
+          }
+          console.log(("Removed image at", oldImage.productImage2), (" ==> status", result));
+        })
+      } catch (error) {
+        console.log('the images couldnt not be deleted')
+      }
+    }
+
+    if (req.files[2]) {
+      try {
+        cloud.v2.uploader.destroy(oldImage.publicid3, function (error, result) {
+          if (error) {
+            console.log(error)
+          }
+          console.log(("Removed image at", oldImage.productImage3), (" ==> status", result));
+        })
+      } catch (error) {
+        console.log('the images couldnt not be deleted')
+      }
+    }
+
+
     try {
       const uploader = async (path) => await Cloudinary.uploads(path, 'Phash');
       const urls = [];
