@@ -1,18 +1,41 @@
 const ProductModel = require('../models/products');
-const cloudinary = require('../config/cloudinary')
+const Cloudinary = require('../config/cloudinary');
+const cloud = require('cloudinary')
 const fs = require('fs');
 const Order = require('../models/orders')
 const Products = require('../models/products')
 const Slider = require('../models/slider')
+let oldImage = {};
 
-async function oneImage(file) {
-  const { path } = file;
-  console.log(path)
-  const uploader = await cloudinary.uploads(path, 'Phash');
-  console.log(uploader)
-  fs.unlinkSync(path)
-  return uploader
+// Get old image path
+// async function getOldImage(req, res, next) {
+//     oldImage = await Page.findOne({ tag: req.params.tag.trim() });
+//     return next();
+// }
+
+// remove old uploaded image
+async function removeOldImage() {
+  if (oldImage) {
+    // Cloudinary
+    cloud.v2.uploader.destroy(oldImage.publicid, function (error, result) {
+      if (error) {
+        console.log(error)
+      }
+      console.log(("Removed image at", oldImage.postImage), (" ==> status", result))
+
+    });
+  }
 }
+
+
+// async function oneImage(file) {
+//   const { path } = file;
+//   console.log(path)
+//   const uploader = await Cloudinary.uploads(path, 'Phash');
+//   console.log(uploader)
+//   fs.unlinkSync(path)
+//   return uploader
+// }
 
 exports.dashboard = async (req, res, next) => {
   let pagename = 'dashboard'
@@ -41,7 +64,7 @@ exports.newProduct = async (req, res, next) => {
   if (req.files) {
     console.log('i am hee')
     try {
-      const uploader = async (path) => await cloudinary.uploads(path, 'Phash');
+      const uploader = async (path) => await Cloudinary.uploads(path, 'Phash');
       const urls = [];
       const files = req.files;
       for (const file of files) {
@@ -159,7 +182,7 @@ exports.sliderpost = async (req, res, next) => {
       var file = req.file
       const { path } = file;
       console.log(path)
-      const uploader = await cloudinary.uploads(path, 'Phash');
+      const uploader = await Cloudinary.uploads(path, 'Phash');
       console.log(uploader)
       fs.unlinkSync(path)
       sliderDetails.sliderImage = uploader.url
@@ -197,11 +220,16 @@ exports.editSlider = async (req, res, next) => {
     text_on_slider: req.body.TextOnSlider
   }
   if (req.file) {
+    //remove the previous image from the storage
+    oldImage = await Slider.findOne({ _id: id })
+    console.log(oldImage)
+    removeOldImage();
+    //then add the new one
     var file = req.file
     const { path } = file;
     console.log(path)
-    const uploader = await cloudinary.uploads(path, 'Phash');
-    console.log(uploader)
+    const uploader = await Cloudinary.uploads(path, 'Phash');
+    console.log('uploader', uploader)
     fs.unlinkSync(path)
     sliderDetails.sliderImage = uploader.url
     sliderDetails.publicid = uploader.id
@@ -257,9 +285,24 @@ exports.editProduct = async (req, res, next) => {
   };
 
   if (req.files) {
-    console.log('i am hee')
     try {
-      const uploader = async (path) => await cloudinary.uploads(path, 'Phash');
+      let picsToDel = [publicid1, publicid2, publicid3]
+      oldImage = await ProductModel.findOne({ _id: id })
+      for (const i=0; i< picsToDel.length; i++) {
+        // removeOldImage(pubid)
+        cloud.v2.uploader.destroy(oldImage.publicid1, function (error, result) {
+          if (error) {
+            console.log(error)
+          }
+          console.log(("Removed image at", oldImage.postImage), (" ==> status", result));
+
+        })
+      }
+    } catch (error) {
+      console.log('the images couldnt not be deleted')
+    }
+    try {
+      const uploader = async (path) => await Cloudinary.uploads(path, 'Phash');
       const urls = [];
       const files = req.files;
       for (const file of files) {
@@ -283,8 +326,8 @@ exports.editProduct = async (req, res, next) => {
 
   console.log(productDetails);
   try {
-  await ProductModel.findByIdAndUpdate({_id: id}, productDetails, {upsert: true})
-  req.flash('success', 'Product Updated succesfully')
+    await ProductModel.findByIdAndUpdate({ _id: id }, productDetails, { upsert: true })
+    req.flash('success', 'Product Updated succesfully')
   } catch (error) {
     console.log(error)
     req.flash('failure', `An error ${error} occured, The upload wasnt succesful`)

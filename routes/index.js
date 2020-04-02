@@ -33,7 +33,8 @@ const { indexPage,
     cleanCart,
     paystackPay,
     paystackCallback,
-    shopPageTag
+    shopPageTag,
+    collection
 } = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
@@ -48,6 +49,7 @@ router.post('/add-to-cart/:id', addToCart);
 router.post("/paystackPay", paystackPay)
 router.get('/paystack/callback', paystackCallback)
 router.get('/shop/:tag', shopPageTag)
+router.get('/shop/cat/:col', collection)
 
 router.get('/cleanCart', cleanCart);
 router.post('/register/members', passport.authenticate('local.register', {
