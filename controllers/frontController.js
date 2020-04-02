@@ -31,6 +31,11 @@ exports.shopPageTag = async (req, res, next) => {
 
     let result = await Products.find({ 'category': req.params.tag })
     res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
+}
+exports.collection = async (req, res, next) => {
+    let pageName = 'shop';
+    let result = await Products.find({ 'productCollection': req.params.col })
+    res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
 
 }
 
