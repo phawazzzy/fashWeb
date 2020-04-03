@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="card-footer justify-content-center d-flex">
                                         <a class="btn btn-primary float-left mr-3" href="slider/edit/<%= result[i]._id%>">Edit slider</a>
-                                        <form action="" method="POST" class="form-inline float-left">
+                                        <form action="/dashboard/slider/delete/<%= result[i]._id %>?_method=DELETE" method="POST" class="form-inline float-left">
                                             <input type="hidden" name="id" value="">
                                             <input type="submit" class="btn btn-danger delete-item" value="Delete">
                                         </form>
@@ -54,6 +54,37 @@
     </div>
 
     <%- include('./partials/script.ejs', {}) %>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+       <% if (typeof success != 'undefined' && success != '' ) { %>
+            swal({
+                icon: 'success',
+                text: "<%= success %>"
+            });
+        <% } else if (typeof failure != 'undefined' && failure != ''){ %>
+            swal({
+                icon: 'error',
+                text: "<%= failure %>"
+            });
+        <% } %>
+       
+    $('.delete-item').click(function(event) {
+            event.preventDefault();
+            let delForm = $(this).parents('form');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, there is no recovery possible!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                   delForm.submit();
+                }
+            });
+        });
+    </script>
 
 
 </body>

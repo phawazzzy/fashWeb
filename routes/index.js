@@ -16,8 +16,9 @@ const { dashboard,
     sliderEdit,
     productEdit,
     editSlider,
-    editProduct
-
+    editProduct,
+    productDel,
+    sliderDel
 } = require('../controllers/dashController');
 
 
@@ -86,6 +87,11 @@ router.route('/dashboard/product/edit/:id')
     .all()
     .get(productEdit)
     .post(upload.array('productImage1'), editProduct)
+
+
+router.delete('/dashboard/product/delete/:id', productDel)
+
+router.delete('/dashboard/slider/delete/:id', sliderDel)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)
