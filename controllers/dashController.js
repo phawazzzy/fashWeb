@@ -7,12 +7,6 @@ const Products = require('../models/products')
 const Slider = require('../models/slider')
 let oldImage = {};
 
-// Get old image path
-// async function getOldImage(req, res, next) {
-//     oldImage = await Page.findOne({ tag: req.params.tag.trim() });
-//     return next();
-// }
-
 // remove old uploaded image
 async function removeOldImage() {
   if (oldImage) {
@@ -21,21 +15,11 @@ async function removeOldImage() {
       if (error) {
         console.log(error)
       }
-      console.log(("Removed image at", oldImage.postImage), (" ==> status", result))
+      console.log(("Removed image at", oldImage.sliderImage), (" ==> status", result))
 
     });
   } ''
 }
-
-
-// async function oneImage(file) {
-//   const { path } = file;
-//   console.log(path)
-//   const uploader = await Cloudinary.uploads(path, 'Phash');
-//   console.log(uploader)
-//   fs.unlinkSync(path)
-//   return uploader
-// }
 
 exports.dashboard = async (req, res, next) => {
   let pagename = 'dashboard'
@@ -89,7 +73,7 @@ exports.newProduct = async (req, res, next) => {
     }
   }
 
-  console.log(productDetails);
+  // console.log(productDetails);
   await ProductModel.create(productDetails).then((result) => {
     if (result) {
       req.flash('success', 'Upload Succesfully done')
@@ -99,10 +83,12 @@ exports.newProduct = async (req, res, next) => {
     req.flash('Failure', 'The Upload wasn`t succesful')
   })
 
-  res.redirect('/dashboard/product')
+  res.redirect('/dashboard/products')
 }
 
 exports.productList = async (req, res, next) => {
+  let success = req.flash('success')
+  let failure = req.flash('failure')
   let pagename = 'product'
   let result = await Products.find({}).then(result => {
     if (result) {
@@ -114,7 +100,7 @@ exports.productList = async (req, res, next) => {
       // throw new Error
     }
   })
-  res.render('backend/productList', { title: 'product LIst', result, pagename })
+  res.render('backend/productList', { title: 'product LIst', result, pagename, success, failure })
 }
 exports.loginAdmin = (req, res, next) => {
   res.render('backend/login', { title: 'Login' })
@@ -165,9 +151,7 @@ exports.orders = async (req, res, next) => {
 
 exports.sliderAdd = async (req, res, next) => {
   let pagename = 'slider'
-  let success = req.flash('success')
-  let imageError = req.flash('imageError')
-  res.render('backend/slider-add', { pagename, success, imageError });
+  res.render('backend/slider-add', { pagename });
 }
 
 exports.sliderpost = async (req, res, next) => {
@@ -175,23 +159,16 @@ exports.sliderpost = async (req, res, next) => {
     sliderName: req.body.sliderName,
     text_on_slider: req.body.TextOnSlider
   }
-
-  console.log(sliderDetails)
   if (req.file) {
-    console.log(req.file)
     try {
       var file = req.file
       const { path } = file;
-      console.log(path)
       const uploader = await Cloudinary.uploads(path, 'Phash');
-      console.log(uploader)
       fs.unlinkSync(path)
       sliderDetails.sliderImage = uploader.url
       sliderDetails.publicid = uploader.id
-      console.log(sliderDetails)
       await Slider.create(sliderDetails).then(result => {
         if (result) {
-          console.log(result)
           req.flash('success', 'Upload Succesfully done')
         }
       })
@@ -200,7 +177,7 @@ exports.sliderpost = async (req, res, next) => {
       req.flash('ImageError', `An error ${error} occured during the image upload`)
     }
   }
-  res.redirect('/dashboard/slider/add')
+  res.redirect('/dashboard/sliders')
 }
 
 exports.sliderEdit = async (req, res, next) => {
@@ -249,6 +226,9 @@ exports.editSlider = async (req, res, next) => {
 
 exports.sliderList = async (req, res, next) => {
   let pagename = 'slider'
+  let success = req.flash('success')
+  let failure = req.flash('failure')
+  let imageError = req.flash('imageError')
   let result = await Slider.find({}).then(result => {
     if (result) {
       // console.log(result)
@@ -260,7 +240,7 @@ exports.sliderList = async (req, res, next) => {
     }
   })
   // console.log('result', result)
-  res.render('backend/slider', { title: 'Slider List', result, pagename })
+  res.render('backend/slider', { title: 'Slider List', result, pagename, success, failure, imageError })
 }
 
 exports.productEdit = async (req, res, next) => {
@@ -362,4 +342,71 @@ exports.editProduct = async (req, res, next) => {
     req.flash('failure', `An error ${error} occured, The upload wasnt succesful`)
   }
   res.redirect('/dashboard/products')
+}
+
+exports.productDel = async (req, res, next) => {
+  let id = req.params.id
+  oldImage = await ProductModel.findOne({ _id: id })
+  if (oldImage.publicid3) {
+
+    try {
+      cloud.v2.uploader.destroy(oldImage.publicid1, function (error, result) {
+        if (error) {
+          console.log(error)
+        }
+        console.log(("Removed image at", oldImage.productImage1), (" ==> status", result));
+      })
+    } catch (error) {
+      console.log('the images couldnt not be deleted')
+    }
+  }
+  if (oldImage.publicid3) {
+    try {
+      cloud.v2.uploader.destroy(oldImage.publicid2, function (error, result) {
+        if (error) {
+          console.log(error)
+        }
+        console.log(("Removed image at", oldImage.productImage2), (" ==> status", result));
+      })
+    } catch (error) {
+      console.log('the images couldnt not be deleted')
+    }
+  }
+  if (oldImage.publicid3) {
+    try {
+      cloud.v2.uploader.destroy(oldImage.publicid3, function (error, result) {
+        if (error) {
+          console.log(error)
+        }
+        console.log(("Removed image at", oldImage.productImage3), (" ==> status", result));
+      })
+    } catch (error) {
+      console.log('the images couldnt not be deleted')
+    }
+  }
+
+  try {
+    await ProductModel.findByIdAndDelete(id)
+    req.flash('success', 'The document has been successfully deleted')
+  } catch (error) {
+    req.flash('failure', 'The document couldnt be deleted, pls try again')
+  }
+  res.redirect('/dashboard/products')
+}
+
+exports.sliderDel = async (req, res, next) => {
+  let id = req.params.id
+  oldImage = await Slider.findOne({ _id: id })
+  if (oldImage.publicid) {
+    removeOldImage();
+  }
+
+  try {
+    await Slider.findByIdAndDelete(id)
+    req.flash('success', 'The document has been successfully deleted')
+
+  } catch (error) {
+    req.flash('failure', 'The document couldnt be deleted, pls try again')
+  }
+  res.redirect('/dashboard/sliders')
 }
