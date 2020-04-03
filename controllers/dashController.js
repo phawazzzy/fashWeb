@@ -58,7 +58,9 @@ exports.newProduct = async (req, res, next) => {
     productPrice: req.body.productPrice,
     size: req.body.size,
     category: req.body.category,
-    productCollection: req.body.collection
+    productCollection: req.body.collection,
+    tag: req.body.tag
+
   };
 
   if (req.files) {
@@ -280,7 +282,8 @@ exports.editProduct = async (req, res, next) => {
     productPrice: req.body.productPrice,
     size: req.body.size,
     category: req.body.category,
-    productCollection: req.body.collection
+    productCollection: req.body.collection,
+    tag: req.body.tag
   };
 
   if (req.files) {

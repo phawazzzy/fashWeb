@@ -28,6 +28,7 @@
                     <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: (typeof result != 'undefined') ? result.productPrice : '' }) %>
                     <%- include('./fields/size.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ', valueField:  (typeof result != 'undefined') ? result.size : '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: (typeof result != 'undefined') ? result.category : '' }) %>
+                    <%- include('./fields/text.ejs', {fieldname: 'tag', fieldlabel: 'Product tags', fieldplaceholder: 'you can add multiple tags seperated by a comma e.g "cloths, shirt" ', valueField: (typeof result != 'undefined') ? result.tag : '' }) %>
                     <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', valueField : (typeof result != 'undefined') ? result.productCollection : ''}) %>
                     
                     <hr class="my-4"/>

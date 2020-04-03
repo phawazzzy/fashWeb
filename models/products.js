@@ -16,9 +16,8 @@ const productSchema = new Schema({
     size: { type: String },
     category: { type: String },
     productCollection: { type: String },
-    registeredDate: { type: Date, default: Date.now }
-
-    // tag: { type: String },
+    registeredDate: { type: Date, default: Date.now },
+    tag: { type: String },
 })
 
 module.exports = mongoose.model('products', productSchema);
