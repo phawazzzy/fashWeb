@@ -24,12 +24,15 @@
                     <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image back view', fieldPlaceholder: 'back view image', valueField: (typeof result != 'undefined') ? result.productImage2 : '' }) %>
                     <%- include('./fields/file.ejs', {fieldname: 'productImage1', fieldlabel: 'image side view', fieldPlaceholder: 'side view image', valueField: (typeof result != 'undefined') ? result.productImage3 : '' }) %>
                     <br>
-                    <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product Description', valueField: (typeof result != 'undefined') ? result.productDescription : '' }) %>
+                    <%- include('./fields/textarea.ejs', {fieldname: 'productDescription',  fieldPlaceholder: 'A little Description on product', fieldlabel: 'product summary Description', valueField: (typeof result != 'undefined') ? result.productDescription : '' }) %>
                     <%- include('./fields/number.ejs', {fieldname: 'productPrice', fieldlabel: 'Product Price', fieldplaceholder: 'Product Price here', valueField: (typeof result != 'undefined') ? result.productPrice : '' }) %>
                     <%- include('./fields/size.ejs', {fieldname: 'size', fieldlabel: 'Product Size', fieldplaceholder: 'Cloth Size ', valueField:  (typeof result != 'undefined') ? result.size : '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'category', fieldlabel: 'Product Category', fieldplaceholder: 'Product Category here', valueField: (typeof result != 'undefined') ? result.category : '' }) %>
                     <%- include('./fields/text.ejs', {fieldname: 'tag', fieldlabel: 'Product tags', fieldplaceholder: 'you can add multiple tags seperated by a comma e.g "cloths, shirt" ', valueField: (typeof result != 'undefined') ? result.tag : '' }) %>
-                    <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', valueField : (typeof result != 'undefined') ? result.productCollection : ''}) %>
+                    <%- include('./fields/select.ejs', {fieldname: 'collection', fieldlabel: 'Product Collection', fieldplaceholder: '', valueField : (typeof result != 'undefined') ? result.productCollection : ''}) %>
+                    <%- include('./fields/textarea.ejs', {fieldname: 'specification', fieldPlaceholder: '', fieldlabel: 'product specification', valueField: (typeof result != 'undefined') ? result.specification : '' }) %>
+                    <%- include('./fields/textarea.ejs', {fieldname: 'description',  fieldPlaceholder: '',fieldlabel: 'product full Description', valueField: (typeof result != 'undefined') ? result.description : '' }) %>
+
                     
                     <hr class="my-4"/>
 
@@ -50,7 +53,6 @@
             <!-- /footer -->
         </div>
     </div>
-    <%- include('./partials/footer.ejs', {}) %>
 
 
 
@@ -70,6 +72,8 @@
         })
     </script>
     <%- include('./partials/script.ejs', {}) %>
+    <%- include('./partials/script2.ejs', {}) %>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
        if('<%- success %>' ){
@@ -84,6 +88,12 @@
                text: "<%=failure%>"
            })
        }
+    </script>
+      <script type="text/javascript">
+        CKbasic('productDescription');
+        CKbasic('specification');
+        CKfull('description');
+
     </script>
 </body>
 

@@ -16,6 +16,8 @@ const productSchema = new Schema({
     size: { type: String },
     category: { type: String },
     productCollection: { type: String },
+    specification: {type: String},
+    description: {type: String},
     registeredDate: { type: Date, default: Date.now },
     tag: { type: String },
 })

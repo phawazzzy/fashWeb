@@ -6,6 +6,7 @@ const sliderSchema = new Schema({
     sliderImage: { type: String },
     publicid: { type: String },
     text_on_slider: { type: String },
+    siteName: {type: String},
     craetedDate: {
         type: Date,
         default: Date.now

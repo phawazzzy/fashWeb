@@ -16,7 +16,9 @@
                 </div>
 
                 <form action="<%= (typeof url != 'undefined') ? url : '/dashboard/slider/add' %> " method="POST" enctype="multipart/form-data" id="productadd">
-                    <%- include('./fields/text', { fieldname: 'sliderName', fieldlabel: 'Slider Name', fieldPlaceholder: 'Name of slider', valueField: (typeof result != 'undefined') ? result.sliderName : '' }); %>
+                    <%- include('./fields/textarea', { fieldname: 'sliderName', fieldlabel: 'Slider Name', fieldPlaceholder: 'Name of slider', valueField: (typeof result != 'undefined') ? result.sliderName : '' }); %>
+                    <%#- include('./fields/textarea', { fieldname: 'siteName', fieldlabel: 'Site Name', fieldPlaceholder: 'site name', valueField: (typeof sliderName != 'undefined') ? siteName : siteName }); %>
+
 
                     <%- include('./fields/file.ejs', { fieldname: 'sliderImage', fieldlabel: 'slider image', fieldPlaceholder: 'slider image', valueField: (typeof result != 'undefined') ? result.sliderImage : '' }) %>
 
@@ -28,7 +30,7 @@
 
                     <div class="col-sm-10 ml-md-auto pl-0">
                         <%- include('./fields/button.ejs', {fieldvalue: (typeof result != 'undefined') ? 'UPDATE SLIDER': 'CREATE SLIDER', fieldname: 'submit'}) %>
-                        <a href="/dashboard/slider" class="btn btn-success pull-right"><i class="fa fa-caret-left pr-2">
+                        <a href="/dashboard/sliders" class="btn btn-success pull-right"><i class="fa fa-caret-left pr-2">
                             </i>Back to List</a>
                     </div>
 
@@ -55,21 +57,15 @@
         })
     </script>
     <%- include('./partials/script.ejs', {}) %>
-    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        if ('<%#- success %>') {
-            swal({
-                icon: "success",
-                text: "<%#=success%>"
-            })
-        }
-        if ('<%#-failure%>') {
-            swal({
-                icon: "error",
-                text: "<%#=failure%>"
-            })
-        }
-    </script> -->
+    <%- include('./partials/script2.ejs', {}) %>
+
+    <script type="text/javascript">
+        CKbasic('TextOnSlider');
+        CKbasic('sliderName');
+        CKbasic('siteName');
+
+        
+    </script>
 
 </body>
 
