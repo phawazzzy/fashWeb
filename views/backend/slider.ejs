@@ -29,7 +29,7 @@
                             <div class="col-sm-4 col-xs-12 px-2">
                                 <div class="border mb-4 mx-1 px-0">
                                     <div class="card-body text-center pb-1">
-                                        <h5 class="card-title"> <%= result[i].sliderName %><h5>
+                                        <h5 class="card-title"> <%- result[i].sliderName %><h5>
                                         <img src="<%= result[i].sliderImage %>" alt="<%= result[i].sliderName%>" class="img-fluid p-2">
                                     </div>
                                     <div class="card-footer justify-content-center d-flex">
@@ -54,37 +54,7 @@
     </div>
 
     <%- include('./partials/script.ejs', {}) %>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-       <% if (typeof success != 'undefined' && success != '' ) { %>
-            swal({
-                icon: 'success',
-                text: "<%= success %>"
-            });
-        <% } else if (typeof failure != 'undefined' && failure != ''){ %>
-            swal({
-                icon: 'error',
-                text: "<%= failure %>"
-            });
-        <% } %>
-       
-    $('.delete-item').click(function(event) {
-            event.preventDefault();
-            let delForm = $(this).parents('form');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, there is no recovery possible!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                   delForm.submit();
-                }
-            });
-        });
-    </script>
+    <%- include('./partials/script2.ejs', {}) %>
 
 
 </body>

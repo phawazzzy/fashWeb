@@ -182,7 +182,7 @@
                                 <span>(5)</span>
                             </div>
                             <div class="pd-desc">
-                                <p> <%= result.productDescription  %> </p>
+                                <p> <%- result.productDescription  %> </p>
                                 <h4> ₦ <%= (result.productPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %> <span> <%= result.discountedPrice? result.discountedPrice : '' %><span></h4>
                             </div>
                             <div class="pd-color">
@@ -192,7 +192,8 @@
                                         <input type="radio" id="cc-black">
                                         <label for="cc-black"></label>
                                     </div>
-                                    <div class="cc-item">
+                                    <di
+                                    v class="cc-item">
                                         <input type="radio" id="cc-yellow">
                                         <label for="cc-yellow" class="cc-yellow"></label>
                                     </div>
@@ -256,9 +257,9 @@
                             <li>
                                 <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="tab-item-content">
@@ -267,25 +268,19 @@
                                 <div class="product-content">
                                     <div class="row">
                                         <div class="col-lg-7">
-                                            <h5>Introduction</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                                            <h5>Features</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                            <%- result.description%>
+                                            
                                         </div>
                                         <div class="col-lg-5">
-                                            <img src="img/kaliLInux.png " alt="">
+                                            <img src="<%= result.productImage1 %> " alt="<%= result.productImage1 %>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tab-2" role="tabpanel">
-                                <div class="specification-table">
+                                <%- result.specification%>
+
+                                <!-- <div class="specification-table">
                                     <table>
                                         <tr>
                                             <td class="p-catagory">Customer Rating</td>
@@ -341,7 +336,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                 <div class="customer-review-option">
@@ -431,104 +426,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="img/kaliLInux.png" alt="">
-                        <div class="sale">Sale</div>
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Coat</div>
-                        <a href="#">
-                            <h5>Pure Pineapple</h5>
-                        </a>
-                        <div class="product-price">
-                            $14.00
-                            <span>$35.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="img/kaliLInux.png" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Shoes</div>
-                        <a href="#">
-                            <h5>Guangzhou sweater</h5>
-                        </a>
-                        <div class="product-price">
-                            $13.00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="img/kaliLInux.png" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Towel</div>
-                        <a href="#">
-                            <h5>Pure Pineapple</h5>
-                        </a>
-                        <div class="product-price">
-                            $34.00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="img/kaliLInux.png" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Towel</div>
-                        <a href="#">
-                            <h5>Converse Shoes</h5>
-                        </a>
-                        <div class="product-price">
-                            $34.00
-                        </div>
-                    </div>
-                </div>
-            </div>
+           <% for(var i = 0; i < result2.length; ++i) { %>
+
+             <div class="col-lg-3 col-sm-6">
+            
+                <%- include('../component/productCard.ejs', {data: result2[i]}) %>
+
+        </div> 
+           <% } %>
+            
         </div>
     </div>
 </div>

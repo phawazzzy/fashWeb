@@ -43,8 +43,9 @@ exports.newProduct = async (req, res, next) => {
     size: req.body.size,
     category: req.body.category,
     productCollection: req.body.collection,
-    tag: req.body.tag
-
+    tag: req.body.tag,
+    specification: req.body.specification,
+    description: req.body.description
   };
 
   if (req.files) {
@@ -80,7 +81,7 @@ exports.newProduct = async (req, res, next) => {
     }
   }).catch(err => {
     console.log(err)
-    req.flash('Failure', 'The Upload wasn`t succesful')
+    req.flash('failure', 'The Upload wasn`t succesful')
   })
 
   res.redirect('/dashboard/products')
@@ -151,13 +152,15 @@ exports.orders = async (req, res, next) => {
 
 exports.sliderAdd = async (req, res, next) => {
   let pagename = 'slider'
-  res.render('backend/slider-add', { pagename });
+  let siteName = 'Phash Supping'
+  res.render('backend/slider-add', { pagename, siteName });
 }
 
 exports.sliderpost = async (req, res, next) => {
   let sliderDetails = {
     sliderName: req.body.sliderName,
-    text_on_slider: req.body.TextOnSlider
+    text_on_slider: req.body.TextOnSlider,
+    siteName: req.body.siteName
   }
   if (req.file) {
     try {
@@ -195,7 +198,9 @@ exports.editSlider = async (req, res, next) => {
   console.log(id)
   let sliderDetails = {
     sliderName: req.body.sliderName,
-    text_on_slider: req.body.TextOnSlider
+    text_on_slider: req.body.TextOnSlider,
+    siteName: req.body.siteName
+
   }
   if (req.file) {
     //remove the previous image from the storage
@@ -263,7 +268,9 @@ exports.editProduct = async (req, res, next) => {
     size: req.body.size,
     category: req.body.category,
     productCollection: req.body.collection,
-    tag: req.body.tag
+    tag: req.body.tag,
+    specification: req.body.specification,
+    description: req.body.description
   };
 
   if (req.files) {

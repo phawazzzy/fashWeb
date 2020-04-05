@@ -54,39 +54,8 @@
     </div>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <%- include('./partials/script.ejs', {}) %>
+    <%- include('./partials/script2.ejs', {}) %>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script>
-       <% if (typeof success != 'undefined' && success != '' ) { %>
-            swal({
-                icon: 'success',
-                text: "<%= success %>"
-            });
-        <% } else if (typeof failure != 'undefined' && failure != ''){ %>
-            swal({
-                icon: 'error',
-                text: "<%= failure %>"
-            });
-        <% } %>
-       
-    $('.delete-item').click(function(event) {
-            event.preventDefault();
-            let delForm = $(this).parents('form');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, there is no recovery possible!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                   delForm.submit();
-                }
-            });
-        });
-    </script>
 
 </body>
 

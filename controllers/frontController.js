@@ -8,9 +8,11 @@ const Slider = require('../models/slider')
 
 exports.indexPage = async (req, res, next) => {
     let pageName = 'Home'
-    let result2 = await Products.find({ 'category': 'women' });
-    let result = await Products.find({ 'category': 'men' });
-    let result3 = await Products.find({ 'category': 'kids' });
+    let result2 = await Products.find({ 'category': 'women' }).limit(5);
+    let result = await Products.find({ 'category': 'men' }).limit(5);
+    let result3 = await Products.find({ 'category': 'kids' }).limit(5);
+    // let result3 = await Products.find({ 'category': 'shoes' });
+
     let slider = await Slider.find({})
 
     //   console.log(women)
@@ -50,14 +52,14 @@ exports.productPage = async (req, res, next) => {
     // console.log("seesion", req.session)
     let pageName = 'shop';
     let subpageName = 'details';
-    await Products.findById({ _id: req.params.id }).then((result) => {
-        // console.log(result)
-        res.render('frontend/product', { title: 'Phash :: Product', result, pageName, subpageName, path, });
-
+    let result = await Products.findById({ _id: req.params.id }).then((result) => {
+        return result
     })
-
-
-
+    let collection = result.productCollection
+    // console.log(collection)
+    let result2 = await Products.find({productCollection: collection }).limit(4)
+    console.log(result2)
+    res.render('frontend/product', { title: 'Phash :: Product', result, result2, pageName, subpageName, path, });
 };
 
 exports.addToCart = async (req, res) => {
@@ -312,5 +314,5 @@ exports.loginPage = (req, res, next) => {
 exports.registerPage = (req, res, next) => {
     let pageName = 'register'
     let message = req.flash('userExist');
-    res.render('frontend/register', { title: 'Phash :: register', message, pageName});
+    res.render('frontend/register', { title: 'Phash :: register', message, pageName });
 };
