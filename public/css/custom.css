@@ -17,3 +17,9 @@
 .passmatch {
     display: none;
 }
+
+
+img.lozad {
+    max-height: 275px !important;
+    height: 100%;
+}
