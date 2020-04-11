@@ -1,5 +1,5 @@
 const paystack = (request) => {
-    const MySecretKey = 'Bearer sk_test_00392fdd25eb2313b6106a3634fb219286bc5cc4';
+    const MySecretKey = 'Bearer sk_live_f24d84b8360f9a38c88ba2ff86ced3d3e6e9750c';
     // const MySecretKey = 'Bearer sk_live_f24d84b8360f9a38c88ba2ff86ced3d3e6e9750c'
     const initializePayment = (form, mycallback) => {
         const options = {
