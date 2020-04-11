@@ -16,7 +16,7 @@ exports.indexPage = async (req, res, next) => {
     let slider = await Slider.find({})
 
     //   console.log(women)
-    res.render('frontend/index', { title: 'phash', result, result2, result3, slider, pageName })
+    res.render('frontend/index', { title: 'Home', result, result2, result3, slider, pageName })
 
 }
 
@@ -24,7 +24,7 @@ exports.shopPage = async (req, res, next) => {
     let pageName = 'Shop';
 
     let result = await Products.find({})
-    res.render('frontend/shop', { title: 'Phash :: Shop', pageName, result });
+    res.render('frontend/shop', { title: 'Shop', pageName, result });
 
 };
 
@@ -37,13 +37,13 @@ exports.shopPageTag = async (req, res, next) => {
 exports.collection = async (req, res, next) => {
     let pageName = 'shop';
     let result = await Products.find({ 'productCollection': req.params.col })
-    res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
+    res.render('frontend/shop', { title: 'shop', pageName, result })
 
 }
 
 exports.contactPage = (req, res, next) => {
     let pageName = 'contact';
-    res.render('frontend/contact', { title: 'Phash :: Contact', pageName, });
+    res.render('frontend/contact', { title: 'Contact', pageName, });
 };
 
 exports.productPage = async (req, res, next) => {
@@ -59,7 +59,7 @@ exports.productPage = async (req, res, next) => {
     // console.log(collection)
     let result2 = await Products.find({productCollection: collection }).limit(4)
     console.log(result2)
-    res.render('frontend/product', { title: 'Phash :: Product', result, result2, pageName, subpageName, path, });
+    res.render('frontend/product', { title: 'Product', result, result2, pageName, subpageName, path, });
 };
 
 exports.addToCart = async (req, res) => {
@@ -112,7 +112,7 @@ exports.cartPage = (req, res, next) => {
     console.log(cart)
     if (cart == {} || req.session.cart == null || cart == undefined) {
         console.log('okkkkkaakakak')
-        res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, cart: cart, });
+        res.render('frontend/cart', { title: 'cart', pageName, subpageName, cart: cart, });
     }
 
     let arr = Object.entries(cart.items);
@@ -160,7 +160,7 @@ exports.cartPage = (req, res, next) => {
     console.log(req.session)
 
 
-    res.render('frontend/cart', { title: 'Phash :: cart', pageName, subpageName, cart: orderDetail, priceDetails });
+    res.render('frontend/cart', { title: 'cart', pageName, subpageName, cart: orderDetail, priceDetails });
 };
 
 
@@ -170,7 +170,7 @@ exports.checkoutPage = (req, res, next) => {
     let subpageName = '';
     if (cart == null) {
         console.log('empty cart')
-        res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart });
+        res.render('frontend/checkout', { title: 'Checkout', pageName, subpageName, cart });
     }
 
     let arr = Object.entries(cart.items);
@@ -210,7 +210,7 @@ exports.checkoutPage = (req, res, next) => {
     })
     console.log(priceDetails)
 
-    res.render('frontend/checkout', { title: 'Phash :: Checkout', pageName, subpageName, cart: orderDetail, priceDetails });
+    res.render('frontend/checkout', { title: 'Checkout', pageName, subpageName, cart: orderDetail, priceDetails });
 
 };
 
@@ -308,11 +308,11 @@ exports.loginPage = (req, res, next) => {
     let passwordError = req.flash('passwordError');
     let LoginError = req.flash('LoginError');
 
-    res.render('frontend/login', { title: 'Phash :: login', passwordError, LoginError, pageName });
+    res.render('frontend/login', { title: 'login', passwordError, LoginError, pageName });
 };
 
 exports.registerPage = (req, res, next) => {
     let pageName = 'register'
     let message = req.flash('userExist');
-    res.render('frontend/register', { title: 'Phash :: register', message, pageName });
+    res.render('frontend/register', { title: 'register', message, pageName });
 };
