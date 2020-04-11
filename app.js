@@ -14,8 +14,8 @@ const methodOverride = require("method-override");
 dotenv.config()
 
 
-// const db_uri = 'mongodb://localhost:27017/phash';
-const db_uri = process.env.DB_URI
+const db_uri = 'mongodb://localhost:27017/phash';
+// const db_uri = process.env.DB_URI
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true}).then(console.log('Database connected')).catch(err => console.log(err));
 
 
