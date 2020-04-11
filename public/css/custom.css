@@ -2,11 +2,11 @@
     border-color: black;
 } */
 .form-control:invalid {
-    border-color: red;
+    border-color: #eaa0a0;
 }
 
 #email:invalid {
-    border-color: red;
+    border-color: #eaa0a0;
 }
 
 .passnotmatch {
@@ -16,4 +16,10 @@
 
 .passmatch {
     display: none;
+}
+
+
+img.lozad {
+    max-height: 275px !important;
+    height: 100%;
 }

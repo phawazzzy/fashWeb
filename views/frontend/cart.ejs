@@ -24,9 +24,9 @@
                                 <tr>
                                     <th>Image</th>
                                     <th class="p-name">Product Name</th>
-                                    <th>Price</th>
+                                    <th>unit price</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>sub Total</th>
                                     <th><i class="ti-close"></i></th>
                                 </tr>
                             </thead>
@@ -59,7 +59,7 @@
                                         <td class="cart-title first-row">
                                             <h5> <%= cart[i].productName %> </h5>
                                         </td>
-                                        <td class="p-price first-row" id="price"> #<%= cart[i].productPrice %> </td>
+                                        <td class="p-price first-row" id="price"> ₦<%= (cart[i].productPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %> </td>
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
@@ -69,7 +69,7 @@
                                             </div>
                                         </td>
                                         <td class="total-price first-row total">
-                                            #<%= priceDetails[i].price %>
+                                            ₦<%= (priceDetails[i].price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
                                         </td>
                                         <td class="close-td first-row"><i class="ti-close" onclick="removeFromSession()"></i></td>
                                     </tr>
@@ -99,7 +99,7 @@
                                 <ul>
                                     <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">Total
-                                        <span> #<%- session.totalPrice ? session.totalPrice : 0 %></span></li>
+                                        <span> ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : 0 %></span></li>
                                 </ul>
                                 
                                     <%if (cart == undefined) { %>

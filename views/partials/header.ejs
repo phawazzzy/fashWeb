@@ -5,29 +5,33 @@
             <div class="ht-left">
                 <div class="mail-service">
                     <i class=" fa fa-envelope"></i>
-                    <a style="text-decoration: none;" href="mailto:mail@gmai.com">phashsupping@gmail.com</a>
+                    <a href="mailto:Phashsupping@hotmail.com"
+                        style="text-decoration: none; color: black;">Phashsupping@hotmail.com</a>
                 </div>
                 <div class="phone-service">
                     <i class=" fa fa-phone"></i>
-                    08162816543
+                    <a href="tel:+2348167561712" style="text-decoration: none; color: black;">Phone: 08167561712 </a>
                 </div>
             </div>
             <div class="ht-right">
                 <a href="<%= authh  ? '/logout' : '/login' %> " class="login-panel"><i
                         class="fa fa-user"></i><%= authh ? 'logout' : 'login' %> </a>
-                <!-- <div class="lan-selector">
+                <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                        <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
-                            data-title="English">English</option>
-                        <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
-                            data-title="Bangladesh">German </option>
+                        <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">
+                            English</option>
+                        <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">
+                            German </option>
                     </select>
-                </div> -->
+                </div>
                 <div class="top-social">
                     <a href="#"><i class="ti-facebook"></i></a>
                     <a href="#"><i class="ti-twitter-alt"></i></a>
-                    <a href="#"><i class="ti-linkedin"></i></a>
-                    <a href="#"><i class="ti-pinterest"></i></a>
+                    <a href="https://www.instagram.com/phash_suppin_/?hl=en" target="_blank"><i
+                            class="fa fa-instagram"></i></a>
+
+                    <!-- <a href="#"><i class="ti-linkedin"></i></a> -->
+                    <!-- <a href="#"><i class="ti-pinterest"></i></a> -->
                 </div>
             </div>
         </div>
@@ -38,7 +42,7 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="/">
-                            <img src="../img/logo.png" alt="">
+                            <img data-src="/img/newlogo.jpeg" class="lozad" alt="company Logo">
                         </a>
                     </div>
                 </div>
@@ -62,7 +66,9 @@
                         <li class="cart-icon">
                             <a href="/cart">
                                 <i class="icon_bag_alt"></i>
-                                <span> <%- session.sumOfQuantity ? session.sumOfQuantity : 0 %></span>
+                                <% if (session.sumOfQuantity) { %>
+                                <span> <%- session.sumOfQuantity %> </span>
+                                <% } %>
                             </a>
                             <!-- <div class="cart-hover">
                                 <div class="select-items">
@@ -105,50 +111,86 @@
                                 </div>
                             </div> -->
                         </li>
-                        <li class="cart-price"> #<%- session.totalPrice ? session.totalPrice : 0 %> </li>
+                        <li class="cart-price">
+                            ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : '' %>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- navbar -->
     <div class="nav-item">
         <div class="container">
-            <div class="nav-depart">
+            <!-- <div class="nav-depart">
                 <div class="depart-btn">
                     <i class="ti-menu"></i>
                     <span>All departments</span>
                     <ul class="depart-hover">
-                        <li class="active"><a href="#">Women’s Clothing</a></li>
-                        <li><a href="#">Men’s Clothing</a></li>
-                        <li><a href="#">Underwear</a></li>
-                        <li><a href="#">Kid's Clothing</a></li>
-                        <li><a href="#">Brand Fashion</a></li>
-                        <li><a href="#">Accessories/Shoes</a></li>
-                        <li><a href="#">Luxury Brands</a></li>
-                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                        <li class="active"><a href="#"></a></li>
+                        <li><a href="#">men</a></li>
+                        <li><a href="#">women</a></li>
+                        <li><a href="#">kids </a></li>
+                        <li><a href="#">male shoes </a></li>
+                        <li><a href="#"> female shoes </a></li>
+                        <li><a href="#"> caps</a></li>
+                        <li><a href="#"> glasses</a></li>
+                        <li><a href="#"> watches</a></li>
+                        <li><a href="#"> sandals</a></li>
+                        <li><a href="#"> sneakers</a></li>
+                        <li><a href="#"> kaftan</a></li>
+                        <li><a href="#"> perfumes</a></li>
+
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/shop">Shop</a></li>
-                    <li><a href="#">Collection</a>
+                    <li class=<%= (pageName == 'Home') ? 'active' : '' %>>
+                        <a href="/">Home</a>
+                    </li>
+                    <li class=<%= (pageName == 'Shop') ? 'active' : '' %>>
+                        <a href="/shop">Shop</a>
+                    </li>
+                    <!-- <li class=<%= (pageName == 'shop') ? 'active' : '' %>><a href="#">Category</a>
                         <ul class="dropdown">
-                            <li><a href="/shop/men">Men's</a></li>
+                            <li class=<%= (pageName == 'shop') ? 'active' : '' %>><a href="/shop/men">Men's</a></li>
                             <li><a href="/shop/women">Women's</a></li>
                             <li><a href="/shop/kids">Kid's</a></li>
                         </ul>
+                    </li> -->
+                    <li class=" <%= (pageName == 'shop') ? 'active' : '' %>"><a href="#">Collection</a>
+                        <ul class="dropdown">
+                            <!-- <li class="active"><a href="#"></a></li> -->
+                            <li><a href="/shop/men">men</a></li>
+                            <li><a href="/shop/women">women</a></li>
+                            <li><a href="/shop/kids">kids </a></li>
+                            <li><a href="/shop/cat/maleshoes">male shoes </a></li>
+                            <li><a href="/shop/cat/femaleshoes"> female shoes </a></li>
+                            <li><a href="/shop/cat/caps"> caps</a></li>
+                            <li><a href="/shop/cat/glasses"> glasses</a></li>
+                            <li><a href="/shop/cat/watches"> watches</a></li>
+                            <li><a href="/shop/cat/sandals"> sandals</a></li>
+                            <li><a href="/shop/cat/sneakers"> sneakers</a></li>
+                            <li><a href="/shop/cat/kaftan"> kaftan</a></li>
+                            <li><a href="/shop/cat/perfumes"> perfumes</a></li>
+                        </ul>
                     </li>
                     <!-- <li><a href="#">Blog</a></li> -->
-                    <li><a href="/contact">Contact</a></li>
+
+                    <li class=<%= (pageName == 'contact') ? 'active' : '' %>>
+                        <a href="/contact">Contact</a>
+                    </li>
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
                             <!-- <li><a href="./blog-details.html">Blog Details</a></li> -->
                             <li><a href="/cart">Shopping Cart</a></li>
-                            <li><a href="/checkout">Checkout</a></li>
+
+
                             <!-- <li><a href="./faq.html">Faq</a></li> -->
-                            <li><a href="./register.html">Register</a></li>
+                            <li><a href="./register">Register</a></li>
                             <li><a href="/logout">logout</a></li>
                         </ul>
                     </li>
@@ -157,5 +199,7 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </div>
+
+    <!-- navbar -->
 </header>
 <!-- Header End -->

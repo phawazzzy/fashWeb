@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<%- include('../partials/head.ejs', {title}) %>
+<%- include('../partials/head.ejs', {title: 'Home'}) %>
 
 <body>
-    <%- include('../partials/loader.ejs', {}) %>
+    <%#- include('../partials/loader.ejs', {}) %>
     <!-- header -->
     <%- include('../partials/header.ejs', {}) %>
     <!-- /header -->
@@ -13,14 +13,14 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/pic1.jpg">
+            <% for(var i =0; i < slider.length; ++i) { %>
+            <div class="single-hero-items set-bg" data-setbg=" <%= slider[i].sliderImage %> ">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>stylish clothes</span>
-                            <h1>Phash Fashion</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <span> <%- slider[i].sliderName %></span>
+                            <h1 style="color: rgb(151, 145, 145);"> PHASH SUPPING</h1>
+                            <p style="color: rgb(22, 19, 22); font-weight: bolder;"> <%- slider[i].text_on_slider %></p>
                             <a href="/shop" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -29,12 +29,13 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="img/pic5.jpeg">
+            <% } %>
+            <!-- <div class="single-hero-items set-bg" data-setbg="img/images.jpeg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>stylish clothes</span>
-                            <h1>Phash Fashion</h1>
+                            <h1>Phash Supping</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore</p>
                             <a href="/shop" class="primary-btn">Shop Now</a>
@@ -44,13 +45,14 @@
                         <h2>Order<span>now</span></h2>
                     </div>
                 </div>
-            </div>
-            <div class="single-hero-items set-bg" data-setbg="img/pic6.jpeg">
+            </div> -->
+
+            <!-- <div class="single-hero-items set-bg" data-setbg="img/large.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>stylish clothes</span>
-                            <h1>Phash Fashion</h1>
+                            <h1>Phash Supping</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore</p>
                             <a href="/shop" class="primary-btn">Shop Now</a>
@@ -60,7 +62,7 @@
                         <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- Hero Section End -->
@@ -70,27 +72,39 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="single-banner">
-                        <img src="img/pic1.jpg" alt="image">
+                        <img class="lozad" src="img/man.jpeg" alt="image">
                         <div class="inner-text">
-                            <h4>Men’s</h4>
+                            <a href="/shop/men">
+                                <h4>Men’s</h4>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="single-banner">
-                        <img src="img/pic5.jpeg" alt="clothe image">
+                        <img class="lozad" src="/img/woman.jpeg" alt="cloth image">
                         <div class="inner-text">
-                            <h4>Women’s</h4>
+                            <a href="/shop/women">
+                                <h4>Women’s</h4>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="single-banner">
-                        <img src="img/pic6.jpeg" alt="model image">
+                        <img class="lozad" src="img/kid.jpeg" alt="model image"> 
                         <div class="inner-text">
-                            <h4>Kid’s</h4>
+                           <a href="/shop/kids"> <h4>Kid’s</h4> </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-banner">
+                        <img class="lozad" src="img/shoe.jpg" alt="model image">
+                        <div class="inner-text">
+                           <a href="/shop/shoes"> <h4> Shoes </h4> </a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +118,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/pic1.jpg">
+                    <div class="product-large set-bg" data-setbg="img/bigbanner.jpeg">
                         <h2>Women’s</h2>
                         <a href="/shop/women">Discover More</a>
                     </div>
@@ -260,7 +274,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">
-                    <div class="product-large set-bg m-large" data-setbg="img/pic4.jpeg">
+                    <div class="product-large set-bg m-large lozad" data-setbg="img/hoodie3.jpeg">
                         <h2>Men’s</h2>
                         <a href="/shop/men">Discover More</a>
                     </div>
@@ -277,8 +291,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/pic1.jpg">
-                        <h2>Women’s</h2>
+                    <div class="product-large set-bg" data-setbg="img/kids.jpeg">
+                        <h2>Kid’s</h2>
                         <a href="/shop/kids">Discover More</a>
                     </div>
                 </div>
@@ -292,8 +306,8 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
-                        <% for (var i = 0; i < result2.length; i++ ) { %>
-                        <%- include('../component/productCard.ejs', {data: result2[i]}) %>
+                        <% for (var i = 0; i < result3.length; i++ ) { %>
+                        <%- include('../component/productCard.ejs', {data: result3[i]}) %>
 
                         <% } %>
 
@@ -314,18 +328,18 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-1.png" alt="">
+                                <img class="lozad" data-src="img/icon-1.png" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <p>For all order over ₦5000</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-2.png" alt="">
+                                <img class="lozad" data-src="img/icon-2.png" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Delivery On Time</h6>
@@ -336,7 +350,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-1.png" alt="">
+                                <img class="lozad" data-src="img/icon-1.png" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Secure Payment</h6>

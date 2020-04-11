@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs', {title: 'slider'}) %>
+
+
+
+<body class="">
+    <div class="wrapper">
+        <%- include('./partials/sidebar.ejs', {}) %>
+        <div class="main-panel">
+            <%- include('./partials/navbar.ejs', {}) %>
+
+            <div class="content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3">
+                    <h1 class="h2 rw">Edit Page Content: <span class="text-info">Slider image</span></h1>
+                </div>
+
+                <form action="<%= (typeof url != 'undefined') ? url : '/dashboard/slider/add' %> " method="POST" enctype="multipart/form-data" id="productadd">
+                    <%- include('./fields/textarea', { fieldname: 'sliderName', fieldlabel: 'Slider Name', fieldPlaceholder: 'Name of slider', valueField: (typeof result != 'undefined') ? result.sliderName : '' }); %>
+                    <%#- include('./fields/textarea', { fieldname: 'siteName', fieldlabel: 'Site Name', fieldPlaceholder: 'site name', valueField: (typeof sliderName != 'undefined') ? siteName : siteName }); %>
+
+
+                    <%- include('./fields/file.ejs', { fieldname: 'sliderImage', fieldlabel: 'slider image', fieldPlaceholder: 'slider image', valueField: (typeof result != 'undefined') ? result.sliderImage : '' }) %>
+
+                    <br>
+
+                    <%- include('./fields/textarea', { fieldname: 'TextOnSlider', fieldlabel: 'Text on slider', fieldPlaceholder: 'Text on slider', valueField: (typeof result != 'undefined') ? result.text_on_slider : '' }); %>
+
+                    <hr class="my-4" />
+
+                    <div class="col-sm-10 ml-md-auto pl-0">
+                        <%- include('./fields/button.ejs', {fieldvalue: (typeof result != 'undefined') ? 'UPDATE SLIDER': 'CREATE SLIDER', fieldname: 'submit'}) %>
+                        <a href="/dashboard/sliders" class="btn btn-success pull-right"><i class="fa fa-caret-left pr-2">
+                            </i>Back to List</a>
+                    </div>
+
+                </form>
+            </div>
+            <%- include('./partials/footer.ejs', {}) %>
+
+        </div>
+    </div>
+
+    <script>
+        const productForm = document.getElementById('productadd');
+        const productPriceField = document.getElementById('productPrice');
+        const submitButton = document.getElementById('submit');
+
+        productPriceField.addEventListener('keyup', (e) => {
+            isValid = productPriceField.checkValidity();
+
+            if (isValid) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        })
+    </script>
+    <%- include('./partials/script.ejs', {}) %>
+    <%- include('./partials/script2.ejs', {}) %>
+
+    <script type="text/javascript">
+        CKbasic('TextOnSlider');
+        CKbasic('sliderName');
+        CKbasic('siteName');
+
+        
+    </script>
+
+</body>
+
+
+</html>

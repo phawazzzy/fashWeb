@@ -4,14 +4,19 @@ const _ = require('lodash');
 const request = require('request');
 const { initializePayment, verifyPayment } = require('../config/paystack')(request)
 const Order = require('../models/orders')
+const Slider = require('../models/slider')
 
 exports.indexPage = async (req, res, next) => {
-  let result2 = await Products.find({ 'category': 'women' });
-  let result = await Products.find({ 'category': 'men' });
-  let result3 = await Products.find({ 'category': 'kids' });
+    let pageName = 'Home'
+    let result2 = await Products.find({ 'category': 'women' }).limit(5);
+    let result = await Products.find({ 'category': 'men' }).limit(5);
+    let result3 = await Products.find({ 'category': 'kids' }).limit(5);
+    // let result3 = await Products.find({ 'category': 'shoes' });
 
-//   console.log(women)
-    res.render('frontend/index', { title: 'phash', result, result2, result3 })
+    let slider = await Slider.find({})
+
+    //   console.log(women)
+    res.render('frontend/index', { title: 'phash', result, result2, result3, slider, pageName })
 
 }
 
@@ -26,13 +31,14 @@ exports.shopPage = async (req, res, next) => {
 exports.shopPageTag = async (req, res, next) => {
     let pageName = 'shop';
 
-    await Products.find({ 'category': req.params.tag }).then((result) => {
-        if (result) {
-            res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
-        }
-        res.render('frontend/shop', { title: 'Phash :: shop', pageName, })
+    let result = await Products.find({ 'category': req.params.tag })
+    res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
+}
+exports.collection = async (req, res, next) => {
+    let pageName = 'shop';
+    let result = await Products.find({ 'productCollection': req.params.col })
+    res.render('frontend/shop', { title: 'Phash :: shop', pageName, result })
 
-    })
 }
 
 exports.contactPage = (req, res, next) => {
@@ -46,14 +52,14 @@ exports.productPage = async (req, res, next) => {
     // console.log("seesion", req.session)
     let pageName = 'shop';
     let subpageName = 'details';
-    await Products.findById({ _id: req.params.id }).then((result) => {
-        // console.log(result)
-        res.render('frontend/product', { title: 'Phash :: Product', result, pageName, subpageName, path, });
-
+    let result = await Products.findById({ _id: req.params.id }).then((result) => {
+        return result
     })
-
-
-
+    let collection = result.productCollection
+    // console.log(collection)
+    let result2 = await Products.find({productCollection: collection }).limit(4)
+    console.log(result2)
+    res.render('frontend/product', { title: 'Phash :: Product', result, result2, pageName, subpageName, path, });
 };
 
 exports.addToCart = async (req, res) => {
@@ -298,13 +304,15 @@ exports.cleanCart = (req, res, next) => {
 }
 
 exports.loginPage = (req, res, next) => {
+    let pageName = 'login'
+    let passwordError = req.flash('passwordError');
+    let LoginError = req.flash('LoginError');
 
-    res.render('frontend/login', { title: 'Phash :: login', });
+    res.render('frontend/login', { title: 'Phash :: login', passwordError, LoginError, pageName });
 };
 
 exports.registerPage = (req, res, next) => {
-
-
+    let pageName = 'register'
     let message = req.flash('userExist');
-    res.render('frontend/register', { title: 'Phash :: register', message, });
+    res.render('frontend/register', { title: 'Phash :: register', message, pageName });
 };

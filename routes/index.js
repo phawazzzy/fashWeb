@@ -8,6 +8,17 @@ const isloggedin = require('../middlewares/isloggedin')
 const { dashboard,
     dashProduct,
     newProduct,
+    orders,
+    productList,
+    sliderAdd,
+    sliderpost,
+    sliderList,
+    sliderEdit,
+    productEdit,
+    editSlider,
+    editProduct,
+    productDel,
+    sliderDel
 } = require('../controllers/dashController');
 
 
@@ -23,7 +34,8 @@ const { indexPage,
     cleanCart,
     paystackPay,
     paystackCallback,
-    shopPageTag
+    shopPageTag,
+    collection
 } = require('../controllers/frontController');
 /* GET home page. */
 router.get('/', indexPage);
@@ -38,10 +50,11 @@ router.post('/add-to-cart/:id', addToCart);
 router.post("/paystackPay", paystackPay)
 router.get('/paystack/callback', paystackCallback)
 router.get('/shop/:tag', shopPageTag)
+router.get('/shop/cat/:col', collection)
 
 router.get('/cleanCart', cleanCart);
 router.post('/register/members', passport.authenticate('local.register', {
-    successRedirect: '/',
+    successRedirect: '/login',
     failureRedirect: '/register',
     failureFlash: true
 }));
@@ -56,6 +69,29 @@ router.post('/login/members', passport.authenticate('local.login', {
 router.get('/dashboard/', dashboard);
 router.get('/dashboard/product', dashProduct);
 router.post('/post/dashboard/product', upload.array('productImage1'), newProduct);
+router.get('/dashboard/orders', orders)
+router.get('/dashboard/products', productList)
+router.get('/dashboard/sliders', sliderList)
+router.route('/dashboard/slider/add')
+    .all()
+    .get(sliderAdd)
+    .post(upload.single('sliderImage'), sliderpost)
+
+router.route('/dashboard/slider/edit/:id')
+    .all()
+    .get(sliderEdit)
+    .post(upload.single('sliderImage'), editSlider)
+
+
+router.route('/dashboard/product/edit/:id')
+    .all()
+    .get(productEdit)
+    .post(upload.array('productImage1'), editProduct)
+
+
+router.delete('/dashboard/product/delete/:id', productDel)
+
+router.delete('/dashboard/slider/delete/:id', sliderDel)
 
 router.post('/postcart', (req, res, next) => {
     console.log(req.body.quantity)

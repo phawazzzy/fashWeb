@@ -9,10 +9,13 @@ const MongoStore = require('connect-mongodb-session')(session);
 const passport = require('passport');
 const flash = require('express-flash');
 const dotenv = require('dotenv');
+const methodOverride = require("method-override");
+
 dotenv.config()
 
 
 const db_uri = 'mongodb://localhost:27017/phash';
+// const db_uri = process.env.DB_URI
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true}).then(console.log('Database connected')).catch(err => console.log(err));
 
 
@@ -30,6 +33,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: "mysecrect",

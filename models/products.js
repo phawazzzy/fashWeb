@@ -12,12 +12,14 @@ const productSchema = new Schema({
     publicid3: { type: String },
     productDescription: { type: String },
     productPrice: { type: Number },
+    discountedPrice: { type: Number },
     size: { type: String },
     category: { type: String },
     productCollection: { type: String },
-    registeredDate: { type: Date, default: Date.now }
-
-    // tag: { type: String },
+    specification: {type: String},
+    description: {type: String},
+    registeredDate: { type: Date, default: Date.now },
+    tag: { type: String },
 })
 
 module.exports = mongoose.model('products', productSchema);

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs', {title}) %>
+
+<body class="">
+    <div class="wrapper">
+        <%- include('./partials/sidebar.ejs', {pagename}) %>
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            <%- include('./partials/navbar.ejs', {}) %>
+            <!-- /Navbar -->
+
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-nd-12 col-sm-12 col-xs-12 px-0">
+                            <a href="/dashboard/Product" class="btn btn-primary">Add New Product <span
+                                    class="fa fa-plus-circle"></span></a>
+                        </div>
+
+                        <div class="col-lg-12 col-nd-12 col-sm-12 col-xs-12 px-0">
+                            <hr class="border-secondary pt-1" />
+                        </div>
+
+                        <h3 class="col-lg-12 col-nd-12 col-sm-12 col-xs-12">Products Uploaded</h3>
+                        <div class="col card-deck mt-3 pl-2">
+                            <%for (var i = result.length - 1; i >= 0; --i) { %>
+                            <div class="col-sm-4 col-xs-12 px-2">
+                                <div class="border mb-4 mx-1 px-0">
+                                    <div class="card-body text-center pb-1">
+                                        <h5 class="card-title"> <%= result[i].productName %><h5>
+                                        <img src="<%= result[i].productImage1 %>" alt="<%= result[i].productName %>" class="img-fluid p-2">
+                                    </div>
+                                    <div class="card-footer justify-content-center d-flex">
+                                        <a class="btn btn-primary float-left mr-3" href="product/edit/<%=result[i]._id%>">Edit Product</a>
+                                        <form action="/dashboard/product/delete/<%= result[i]._id %>?_method=DELETE" method="POST" class="form-inline float-left">
+                                            <input type="hidden" name="id" value=" <%=result[i]._id %> ">
+                                            <input type="submit" class="btn btn-danger delete-item" value="Delete">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <%- include('./partials/footer.ejs', {}) %>
+
+        </div>
+    </div>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <%- include('./partials/script.ejs', {}) %>
+    <%- include('./partials/script2.ejs', {}) %>
+
+
+</body>
+
+</html>
