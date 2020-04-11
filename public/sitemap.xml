@@ -1,11 +1,11 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
+<urlset>
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>http://www.phashsupping.com/</loc>
@@ -26,16 +26,21 @@
   <loc>http://www.phashsupping.com/login</loc>
   <lastmod>2020-04-08T23:35:56+00:00</lastmod>
   <priority>0.90</priority>
-</url>
-<url>
-  <loc>http://www.phashsupping.com/register</loc>
+ </url>
+ <url>
+  <loc>http://www.phashsupping.com/login</loc>
   <lastmod>2020-04-08T23:35:56+00:00</lastmod>
-  <priority>0.90</priority>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.phashsupping.com/cart</loc>
   <lastmod>2020-04-08T23:35:56+00:00</lastmod>
-  <priority>0.90</priority>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.phashsupping.com/shop/men</loc>
@@ -52,4 +57,310 @@
   <lastmod>2020-04-08T23:35:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/maleshoes</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/femaleshoes</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/caps</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/glasses</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/watches</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/sandals</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/sneakers</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/kaftan</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/perfumes</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/contact</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/register</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/cart</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/men</loc>
+
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/shoes</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83ca38379bd000170b02d2</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83dd3e379bd000170b02d8</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/kids</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86280805da230017c8c8b8</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8628fc05da230017c8c8bb</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e828c6585a7fd3f8cb6d975</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83e5f7379bd000170b02da</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8484d651e78f0017e35682</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e84870151e78f0017e35685</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8488d851e78f0017e35686</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83e712379bd000170b02db</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83e997379bd000170b02dc</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83eaed379bd000170b02dd</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8b2163546a2d001776433b</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8b1f0f546a2d001776433a</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e89d3e7e16166001756f508</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e89d144e16166001756f507</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e89bd5ae16166001756f506</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e89ae6e9105e0001744a199</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e89a9a99105e0001744a197</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e879c51c2e1d80017c0516f</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e879bbdc2e1d80017c0516e</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e879abec2e1d80017c0516d</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e879871c2e1d80017c0516b</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e87975bc2e1d80017c0516a</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e87963bc2e1d80017c05169</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e87936fc2e1d80017c05167</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e862bc105da230017c8c8c0</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e862b3d05da230017c8c8bf</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e862acb05da230017c8c8be</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e862a1405da230017c8c8bd</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86295705da230017c8c8bc</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e8628ae05da230017c8c8ba</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86285505da230017c8c8b9</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86278405da230017c8c8b7</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86272d05da230017c8c8b6</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86268505da230017c8c8b5</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e86260e05da230017c8c8b4</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83d8d4379bd000170b02d7</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83d12b379bd000170b02d4</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/products/5e83809139350f001723a8ed</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/register</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cart</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/shop</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/register</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/cart</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.phashsupping.com/shop/cat/shop</loc>
+  <lastmod>2020-04-08T23:35:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 </urlset>
+
