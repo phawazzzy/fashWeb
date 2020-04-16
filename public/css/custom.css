@@ -23,3 +23,43 @@ img.lozad {
     max-height: 275px !important;
     height: 100%;
 }
+
+.banner-section.spad {
+    background-color: black;
+}
+
+.product-item {
+    border: 1px solid #f5f5f5;
+}
+
+section.women-banner.spad .owl-item,section.man-banner.spad .owl-item {
+    max-width: 200px !important;
+}
+
+.filter-control {
+    text-align: justify;
+    margin-bottom: 45px;
+    padding-top: 32px;
+}
+
+section.women-banner.spad {
+    background-color: black;
+}
+
+i.ti-angle-right {
+    color: #e7ab3c;
+}
+
+i.ti-angle-left {
+    color: #e7ab3c;
+}
+
+.leftline::after {
+    content: "";
+    position: absolute;
+    background-color: #e7ab3c;
+    width: 1px;
+    height: 90%;
+    bottom: 0px;
+    right: 0px;
+}

@@ -1,5 +1,11 @@
-<!-- Header Section Begin -->
-<header class="header-section">
+<header class="main-header">
+    <div class="header-slide" style="background-color: #ffeacd;">
+        <div class="container">
+            <a href="#">
+            <img src="https://ng.jumia.is/cms/Homepage/2020/Top-strip/0-Top-Strip-.gif"  class="_ni" alt="Stay Safe">
+        </a>
+        </div>
+    </div>
     <div class="header-top">
         <div class="container">
             <div class="ht-left">
@@ -14,13 +20,11 @@
                 </div>
             </div>
             <div class="ht-right">
-                <a href="<%= authh  ? '/logout' : '/login' %> " class="login-panel"><i
-                        class="fa fa-user"></i><%= authh ? 'logout' : 'login' %> </a>
                 <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                        <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">
+                        <option value='yt' data-image="/img/flag-1.webp" data-imagecss="flag yt" data-title="English">
                             English</option>
-                        <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">
+                        <option value='yu' data-image="/img/flag-2.webp" data-imagecss="flag yu" data-title="Bangladesh">
                             German </option>
                     </select>
                 </div>
@@ -37,169 +41,217 @@
         </div>
     </div>
     <div class="container">
-        <div class="inner-header">
-            <div class="row">
-                <div class="col-lg-2 col-md-2">
-                    <div class="logo">
-                        <a href="/">
-                            <img data-src="/img/newlogo.jpeg" class="lozad" alt="company Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-7">
-                    <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories</button>
-                        <div class="input-group">
-                            <input type="text" placeholder="What do you need?">
-                            <button type="button"><i class="ti-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-right col-md-3">
-                    <ul class="nav-right">
-                        <!-- <li class="heart-icon">
-                            <a href="#">
-                                <i class="icon_heart_alt"></i>
-                                <span>1</span>
-                            </a>
-                        </li> -->
-                        <li class="cart-icon">
-                            <a href="/cart">
-                                <i class="icon_bag_alt"></i>
-                                <% if (session.sumOfQuantity) { %>
-                                <span> <%- session.sumOfQuantity %> </span>
-                                <% } %>
-                            </a>
-                            <!-- <div class="cart-hover">
-                                <div class="select-items">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td class="si-pic"><img src="#" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="si-pic"><img src="#" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="select-total">
-                                    <span>total:</span>
-                                    <h5>$120.00</h5>
-                                </div>
-                                <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
-                                </div>
-                            </div> -->
-                        </li>
-                        <li class="cart-price">
-                            ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : '' %>
-                        </li>
-                    </ul>
-                </div>
+        
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="logo">
+                    <a href="/"><img src="/img/phashsupping-logo.png" width="40%" class="img-responsive" alt="logo"></a>
+                </div> <!-- .logo -->
             </div>
-        </div>
-    </div>
 
-
-    <!-- navbar -->
-    <div class="nav-item">
-        <div class="container">
-            <!-- <div class="nav-depart">
-                <div class="depart-btn">
-                    <i class="ti-menu"></i>
-                    <span>All departments</span>
-                    <ul class="depart-hover">
-                        <li class="active"><a href="#"></a></li>
-                        <li><a href="#">men</a></li>
-                        <li><a href="#">women</a></li>
-                        <li><a href="#">kids </a></li>
-                        <li><a href="#">male shoes </a></li>
-                        <li><a href="#"> female shoes </a></li>
-                        <li><a href="#"> caps</a></li>
-                        <li><a href="#"> glasses</a></li>
-                        <li><a href="#"> watches</a></li>
-                        <li><a href="#"> sandals</a></li>
-                        <li><a href="#"> sneakers</a></li>
-                        <li><a href="#"> kaftan</a></li>
-                        <li><a href="#"> perfumes</a></li>
-
-                    </ul>
-                </div>
-            </div> -->
-            <nav class="nav-menu mobile-menu">
-                <ul>
-                    <li class=<%= (pageName == 'Home') ? 'active' : '' %>>
+            <div class="col-md-8">
+                <a href="#" class="user-links-toggler"><i class="fa fa-bars"></i></a>
+                <div class="user-links clearfix">
+                    <!-- <div class="social-links">
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                    </div> .social -->
+                    <div class="account-links">
+                        <a href="<%= authh  ? '/logout' : '/login' %> " class="login-panel"><i
+                            class="fa fa-lock"></i><%= authh ? 'logout' : 'login' %> </a>
+                    </div> <!-- .account-links -->
+                    <div class="secondary-menu">
                         <a href="/">Home</a>
-                    </li>
-                    <li class=<%= (pageName == 'Shop') ? 'active' : '' %>>
                         <a href="/shop">Shop</a>
-                    </li>
-                    <!-- <li class=<%= (pageName == 'shop') ? 'active' : '' %>><a href="#">Category</a>
-                        <ul class="dropdown">
-                            <li class=<%= (pageName == 'shop') ? 'active' : '' %>><a href="/shop/men">Men's</a></li>
-                            <li><a href="/shop/women">Women's</a></li>
-                            <li><a href="/shop/kids">Kid's</a></li>
-                        </ul>
-                    </li> -->
-                    <li class=" <%= (pageName == 'shop') ? 'active' : '' %>"><a href="#">Collection</a>
-                        <ul class="dropdown">
-                            <!-- <li class="active"><a href="#"></a></li> -->
-                            <li><a href="/shop/men">men</a></li>
-                            <li><a href="/shop/women">women</a></li>
-                            <li><a href="/shop/kids">kids </a></li>
-                            <li><a href="/shop/cat/maleshoes">male shoes </a></li>
-                            <li><a href="/shop/cat/femaleshoes"> female shoes </a></li>
-                            <li><a href="/shop/cat/caps"> caps</a></li>
-                            <li><a href="/shop/cat/glasses"> glasses</a></li>
-                            <li><a href="/shop/cat/watches"> watches</a></li>
-                            <li><a href="/shop/cat/sandals"> sandals</a></li>
-                            <li><a href="/shop/cat/sneakers"> sneakers</a></li>
-                            <li><a href="/shop/cat/kaftan"> kaftan</a></li>
-                            <li><a href="/shop/cat/perfumes"> perfumes</a></li>
-                        </ul>
-                    </li>
-                    <!-- <li><a href="#">Blog</a></li> -->
+                        <a href="/about">About Us</a>
+                        <a href="/contact">Contact Us</a>
+                        <a href="/register" class="login-panel"><i class="fa fa-user" ></i> Register</a>
+                    </div> <!-- .secondary-menu -->
+                </div> <!-- .user-links -->
+                <div class="mobile user-links clearfix">
+                    <div class="secondary-menu">
+                        <a href="/">Home</a>
+                        <a href="/shop">Shop</a>
+                        <a href="/about">About Us</a>
+                        <a href="/contact">Contact Us</a>
+                        <a href="/register" class="login-panel"><i class="fa fa-user" ></i> Register</a>
+                    </div> <!-- .secondary-menu -->
+                    <div class="account-links">
+                        <a href="<%= authh  ? '/logout' : '/login' %> " class="login-panel"><i
+                            class="fa fa-lock"></i><%= authh ? 'logout' : 'login' %> </a>
+                        
+                    </div> <!-- .account-links -->
+                    <!-- <div class="social-links">
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                    </div> .social -->
+                </div> <!-- .mobile.user-links -->
+            </div>
 
-                    <li class=<%= (pageName == 'contact') ? 'active' : '' %>>
-                        <a href="/contact">Contact</a>
-                    </li>
-                    <li><a href="#">Pages</a>
-                        <ul class="dropdown">
-                            <!-- <li><a href="./blog-details.html">Blog Details</a></li> -->
-                            <li><a href="/cart">Shopping Cart</a></li>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</header> <!-- .main-header -->
 
+<nav class="navigation">			
+    <div class="container">
+        <div class="row">
 
-                            <!-- <li><a href="./faq.html">Faq</a></li> -->
-                            <li><a href="./register">Register</a></li>
-                            <li><a href="/logout">logout</a></li>
+            <div class="col-md-3 col-sm-4 col-xs-3">
+                <div class="mainmenu">
+                    <a href="#" class="menu-trigger">
+                        <i class="fa dyna fa-bars"></i>
+                        <span>Categories</span>
+                        <i class="fa fa-caret-down"></i>
+                    </a> <!-- .menu-trigger -->					
+                </div> <!-- .mainenu -->
+            </div>
+
+            <div class="col-md-7 col-sm-6 col-xs-7">
+                <div class="searchbar">
+                    <form action="" method="get">
+                        <input type="text" placeholder="Search your product here" class="input" name="q">
+                        <button type="submit" class="button" value="Search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div> <!-- .searchbar -->
+            </div>
+
+            <div class="col-sm-2 col-xs-2">
+                <div class="cart-link">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>My Cart</span> &nbsp; 
+                        <i class="fa fa-angle-down" style="position: relative; bottom: 2px; font-size: 12px;"></i>
+                    </a>
+                    <div class="cart-box">
+                        <ul class="item-list">
+                            <li class="item clearfix">
+                                <div class="image">
+                                    <a href="#"><img src="/images/cart-item.png" alt=""></a>
+                                </div>
+                                <div class="details">
+                                    <span class="name"><a href="#">Lether woemn bag</a></span>
+                                    <span class="price">$99.00</span>
+                                    <span class="delete-item"><i class="fa fa-times"></i></span>
+                                </div>
+                            </li>
+                            <li class="item clearfix">
+                                <div class="image">
+                                    <a href="#"><img src="/images/cart-item.png" alt=""></a>
+                                </div>
+                                <div class="details">
+                                    <span class="name"><a href="#">Lether woemn bag</a></span>
+                                    <span class="price">$99.00</span>
+                                    <span class="delete-item"><i class="fa fa-times"></i></span>
+                                </div>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div id="mobile-menu-wrap"></div>
-        </div>
+                        <div class="clearfix cart-summary">
+                            <div class="summary-left">
+                                2 products added
+                            </div>
+                            <div class="summary-right">
+                                $200.00
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="button">View Cart</a>
+                            <a href="#" class="button ghost">Check Out</a>
+                        </div>
+                    </div> <!-- .cart-box -->
+                </div> <!-- .cart-link -->
+            </div>
+
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+        <div class="menu-wrapper" style="display: none;">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="menu-box">
+                            <div class="title">
+                                <img src="/img/women.png" alt="icon"> Womens Dresses
+                            </div> <!-- .title -->
+                            <ul class="linklist">
+                                <li><a href="#">Mobile</a></li>
+                                <li><a href="#">Tablets</a></li>
+                                <li><a href="#">Computer</a></li>
+                                <li><a href="#">Pen drives</a></li>
+                                <li><a href="#">Headphones</a></li>
+                                <li><a href="#">Tablets</a></li>
+                                <li><a href="#">Computer</a></li>
+                                <li><a href="#">Pen drives</a></li>
+                                <li><a href="#">Headphones</a></li>
+                                <li><a href="#" class="alt"><strong>View All »</strong></a></li>
+                            </ul> <!-- .linklist -->
+                        </div> <!-- .menu-box -->
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="menu-box">
+                            <div class="title">
+                                <img src="img/men.png" alt="icon"> Mens fashion
+                            </div> <!-- .title -->
+                            <ul class="linklist">
+                                <li><a href="#"> Gift &amp; Lifestyle Gadgets </a></li>
+                                <li><a href="#">Gift for Men </a></li>
+                                <li><a href="#">Gift for Women </a></li>
+                                <li><a href="#">Golf Supplies </a></li>
+                                <li><a href="#">Golf Supplies </a></li>
+                                <li><a href="#">Latest Jorgious Dressess </a></li>
+                                <li><a href="#">Leather Material </a></li>
+                                <li><a href="#">Gift for Men </a></li>
+                                <li><a href="#">Gift for Women </a></li>
+                                <li><a href="#" class="alt"><strong>View All »</strong></a></li>
+                            </ul> <!-- .linklist -->
+                        </div> <!-- .menu-box -->
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="menu-box">
+                            <div class="title">
+                                <img src="img/kid.png" alt="icon"> Kids fashion
+                            </div> <!-- .title -->
+                            <ul class="linklist">
+                                <li><a href="#"> Salon &amp; Spa Equipment </a></li>
+                                <li><a href="#">Shaving &amp; Hair Removal </a></li>
+                                <li><a href="#">Lighter &amp; Cigar Supplies </a></li>
+                                <li><a href="#">RC Cars &amp; PartsGift  </a></li>
+                                <li><a href="#">Lifestyle Gadgets </a></li>
+                                <li><a href="#">Gift for Men </a></li>
+                                <li><a href="#">Gift for Women </a></li>
+                                <li><a href="#">Shaving &amp; Hair Removal </a></li>
+                                <li><a href="#">Lighter &amp; Cigar Supplies </a></li>
+                                <li><a href="#" class="alt"><strong>View All »</strong></a></li>
+                            </ul> <!-- .linklist -->
+                        </div> <!-- .menu-box -->
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="menu-box">
+                            <div class="menu_verticle_banner">
+                                <img src="/img/banner-verticle.png" alt="banner"> 
+                            </div> <!-- .banner -->
+                        </div> <!-- .menu-box -->
+                    </div>
+
+                    
+
+                    
+
+                    
+
+                </div> <!-- .row -->
+            </div>
+        </div> <!-- .menu-container -->
+</nav> <!-- .navigation -->
+
+<div class="container-fluid">
+    <div class="content">
     </div>
-
-    <!-- navbar -->
-</header>
-<!-- Header End -->
+</div>
