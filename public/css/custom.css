@@ -261,3 +261,14 @@ a {
     font-size: 20px;
     font-weight: 700;
 }
+
+.product-item .pi-pic ul {
+    position: absolute;
+    left: 0;
+    bottom: -74px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    width: 100%;
+}
