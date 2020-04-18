@@ -31,6 +31,7 @@ const { indexPage,
     loginPage,
     registerPage,
     addToCart,
+    aboutPage,
     cleanCart,
     paystackPay,
     paystackCallback,
@@ -41,6 +42,7 @@ const { indexPage,
 router.get('/', indexPage);
 router.get('/shop', shopPage);
 router.get('/contact', contactPage);
+router.get('/about',aboutPage);
 router.get('/products/:id', productPage);
 router.get('/cart', cartPage);
 router.get('/checkout', isloggedin, checkoutPage);

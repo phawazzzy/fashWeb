@@ -76,3 +76,18 @@
 
 @media only screen and ( max-width: 320px ) {
 }
+
+@media only screen and (max-width: 1199px)
+.h5, h5 {
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 1199px)
+.section.small_pb{
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width: 768px)
+.feature-box {
+    padding: 4.1rem 4.5rem 4rem;
+}
