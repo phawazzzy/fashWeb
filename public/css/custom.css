@@ -46,9 +46,6 @@ section.women-banner.spad .owl-item,section.man-banner.spad .owl-item {
     padding-top: 32px;
 }
 
-section.women-banner.spad {
-    
-}
 
 i.ti-angle-right {
     color: #e7ab3c;
@@ -87,11 +84,6 @@ i.ti-angle-left {
         letter-spacing: 8px;
         font-weight: 100;
         color: #171414;
-}
-
-@media (min-width: 576px)
-.jumbotron.bg {
-    padding: 7rem 2rem;
 }
 
 .product-item .pi-pic ul li a {
