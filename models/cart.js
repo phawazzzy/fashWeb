@@ -21,3 +21,11 @@ module.exports = function Cart(oldCart) {
         return arr;
     };
 };
+
+// function to remove an item
+this.remove = function(item, id, qty, itemPrice) {
+    var storedItem = this.item[id]
+    storedItem = this.item[id] = {item: item, qty: qty, pricePerOne: itemPrice}
+    this.totalPrice
+    this.totalQty 
+}

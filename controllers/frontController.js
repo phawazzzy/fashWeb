@@ -116,7 +116,7 @@ exports.cartPage = (req, res, next) => {
     const cart = req.session.cart
     console.log(cart)
     if (cart == {} || req.session.cart == null || cart == undefined) {
-        console.log('okkkkkaakakak')
+        console.log('Cart is empty')
         res.render('frontend/cart', { title: 'cart', pageName, subpageName, cart: cart, });
     }
 

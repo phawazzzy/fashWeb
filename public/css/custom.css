@@ -272,3 +272,16 @@ a {
     text-align: center;
     width: 100%;
 }
+
+.empty-cart{
+    background-image:url("/img/empty-cart.gif");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.shop-button {
+    text-align: center;
+    margin: 225px auto;
+}
