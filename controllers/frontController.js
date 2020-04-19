@@ -46,6 +46,11 @@ exports.contactPage = (req, res, next) => {
     res.render('frontend/contact', { title: 'Contact', pageName, });
 };
 
+exports.aboutPage = (req, res, next) => {
+    let pageName = 'about';
+    res.render('frontend/about', { title: 'About', pageName, });
+};
+
 exports.productPage = async (req, res, next) => {
     let path = req.path;
     console.log(path)
@@ -111,7 +116,7 @@ exports.cartPage = (req, res, next) => {
     const cart = req.session.cart
     console.log(cart)
     if (cart == {} || req.session.cart == null || cart == undefined) {
-        console.log('okkkkkaakakak')
+        console.log('Cart is empty')
         res.render('frontend/cart', { title: 'cart', pageName, subpageName, cart: cart, });
     }
 

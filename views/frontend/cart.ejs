@@ -12,8 +12,21 @@
     <%#- include('../partials/breadCrumbs.ejs', { pageName }) %>
 
     <!-- Breadcrumb Section Begin -->
-
-    <!-- Shopping Cart Section Begin -->
+    
+    <%if (cart == undefined) { %>
+        <div class="empty-cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="shop-button">
+                            <a href="/shop" class="btn btn-primary btn-lg" role="button">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <% }else { %>
     <section class="shopping-cart spad">
         <div class="container">
             <div class="row">
@@ -30,30 +43,10 @@
                                     <th><i class="ti-close"></i></th>
                                 </tr>
                             </thead>
-                            <%if (cart == undefined) { %>
-                            <tbody>
-                                <tr>
-
-                                    <td> YOU DONT HAVE ANYTHING HERE
-                                        <a href="/shop">add</a>
-                                        SOMETHING
-                                    </td>
-                                    <td> nothing </td>
-                                    <td> here</td>
-                                    <td> please </td>
-                                    <td>
-                                        <a href="/shop">add</a>
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-                            <% }else { %>
                             <tbody>
                                 <form action="/postcart" method="post">
-
                                     <% for (let i = 0; i < cart.length; i++) { %>
-                                    <tr>
+                                    <tr class="<%= i %>" id="<%= i %>">
                                         <td class="cart-pic first-row"><img src=" <%= cart[i].productImage1%>" alt="">
                                         </td>
                                         <td class="cart-title first-row">
@@ -63,7 +56,7 @@
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" id='quantity' class="quantity" name='quantity'
+                                                    <input type="text" id='<%= cart[i].productName %>' class="quantity" name='quantity'
                                                         value="<%= priceDetails[i].qty %>" disabled>
                                                 </div>
                                             </div>
@@ -71,15 +64,13 @@
                                         <td class="total-price first-row total">
                                             ₦<%= (priceDetails[i].price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
                                         </td>
-                                        <td class="close-td first-row"><i class="ti-close" onclick="removeFromSession()"></i></td>
+                                        <td class="close-td first-row"><i class="ti-close <%= i %>"></i></td>
                                     </tr>
-
                                     <% } %>
                             </tbody>
-                            <% } %>
-
                         </table>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
@@ -99,15 +90,9 @@
                                 <ul>
                                     <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">Total
-                                        <span> ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : 0 %></span></li>
+                                        <span id="priceTag"> ₦<%- session.totalPrice ? (session.totalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') : 0 %></span></li>
                                 </ul>
-                                
-                                    <%if (cart == undefined) { %>
-                                    <button type="submit" style="display: none;"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
-                                    <% }else { %>
                                     <button type="submit"><a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a></button>
-
-                                    <% } %>
                             </div>
                         </div>
                     </div>
@@ -115,8 +100,12 @@
             </div>
         </div>
     </section>
-    <!-- Shopping Cart Section End -->
+    <% } %>
+        
+                                    
 
+    
+    
     <%- include('../partials/footer.ejs', {}) %>
     <%- include('../partials/script.ejs', {}) %>
 </body>
